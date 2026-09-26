@@ -43,8 +43,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${familjen.variable} ${sourceSerif.variable} ${martian.variable} antialiased`}
+      // The inline script below adds the "js" class before hydration.
+      suppressHydrationWarning
     >
-      <body className="min-h-dvh font-serif">{children}</body>
+      <head>
+        {/* Scroll-reveal content is only hidden when JS is running to reveal it. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
+      <body className="min-h-dvh overflow-x-clip font-serif">{children}</body>
     </html>
   );
 }

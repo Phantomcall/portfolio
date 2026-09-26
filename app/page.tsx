@@ -1,8 +1,14 @@
-import Image from "next/image";
+import type { CSSProperties } from "react";
+import { Availability } from "@/app/_components/availability";
+import { HeroGraph, type GraphPr } from "@/app/_components/hero-graph";
 import { MergeLedger, type LedgerRow } from "@/app/_components/merge-ledger";
+import { CopyEmail, CountUp, Reveal, SiteHeader, Spotlight } from "@/app/_components/motion";
+import { ProjectFrame } from "@/app/_components/project-frame";
+import { Rates } from "@/app/_components/rates";
 import { projects } from "@/lib/projects";
 import { KINDS, findPr, formatDate, formatMonth, pullRequests, repoCount } from "@/lib/prs";
 
+const NAME = "Patrick Uje";
 const EMAIL = "pinzypatz@gmail.com";
 const GITHUB = "https://github.com/Phantomcall";
 
@@ -19,8 +25,27 @@ const rows: LedgerRow[] = KINDS.map(({ kind, label }) => ({
 const latestIndex = pullRequests.length - 1;
 const latestRow = rows.findIndex((r) => r.prs.some((p) => p.i === latestIndex));
 const latest = { row: latestRow, col: rows[latestRow].prs.findIndex((p) => p.i === latestIndex) };
-
 const since = formatMonth(pullRequests[0].mergedAt);
+
+// The hero graph replays the most recent merges, in order, as branches.
+const graphPrs: GraphPr[] = pullRequests.slice(-60).map((p) => {
+  const repo = p.repo.split("/")[1];
+  return { kind: p.kind, label: `${repo.length > 22 ? `${repo.slice(0, 21)}…` : repo} #${p.url.split("/").pop()}` };
+});
+
+// Headline words. The three promises get their own animated gradient.
+const HEADLINE: { text: string; from?: string; to?: string }[] = [
+  { text: "I" },
+  { text: "build" },
+  { text: "React" },
+  { text: "interfaces" },
+  { text: "that" },
+  { text: "are" },
+  { text: "tested,", from: "#3ddba5", to: "#6ea8ff" },
+  { text: "accessible", from: "#b3a8ff", to: "#6ea8ff" },
+  { text: "and" },
+  { text: "fast.", from: "#ffc845", to: "#ff8a5b" },
+];
 
 const practices = [
   {
@@ -28,223 +53,348 @@ const practices = [
     body: "I add tests where they catch real regressions: interaction tests in Storybook, automated accessibility checks and visual snapshots.",
     evidence: "Storybook with interaction tests, an accessibility addon and Chromatic visual snapshots",
     pr: findPr("Storybook with stories"),
+    color: "#3ddba5",
   },
   {
     title: "Accessible",
     body: "Keyboard paths, focus management and screen-reader announcements are part of done, not a follow-up ticket.",
     evidence: "Wired Mirror to the live vault and closed its accessibility gaps",
     pr: findPr("a11y gaps"),
+    color: "#b3a8ff",
   },
   {
     title: "Fast",
     body: "I measure first, fix what the numbers show, then add a CI gate so the page stays fast after I leave.",
     evidence: "Lighthouse CI gate, next/image optimisation and below-the-fold code-splitting",
     pr: findPr("Lighthouse CI gate"),
+    color: "#ffc845",
   },
   {
     title: "Reviewable",
     body: "Small pull requests with a clear description, and CI that lints, type-checks, tests and builds every change.",
     evidence: "GitHub Actions workflow that lints, type-checks, tests and builds every PR",
     pr: findPr("lint/typecheck/test/build"),
+    color: "#6ea8ff",
   },
 ];
 
-const skills = [
-  ["Languages", "TypeScript, JavaScript, HTML, CSS"],
-  ["Frameworks & UI", "React, Next.js (App Router), Tailwind CSS, Radix UI, Framer Motion, HTML Canvas"],
-  ["Testing", "Storybook, Vitest, interaction and accessibility tests, Chromatic"],
-  ["Data & APIs", "TanStack Query, REST APIs, Supabase, Zod"],
-  ["Web3", "wagmi, viem, RainbowKit"],
-  ["Tooling", "Git, GitHub Actions, Lighthouse CI, ESLint, Linux"],
-  ["Education", "B.Sc. Computer Science, final year"],
+const skills: [string, string[]][] = [
+  ["Languages", ["TypeScript", "JavaScript", "HTML", "CSS"]],
+  ["Frameworks & UI", ["React", "Next.js", "Tailwind CSS", "Radix UI", "Framer Motion", "HTML Canvas"]],
+  ["Testing", ["Storybook", "Vitest", "Accessibility tests", "Chromatic"]],
+  ["Data & APIs", ["TanStack Query", "REST APIs", "Supabase", "Zod"]],
+  ["Web3", ["wagmi", "viem", "RainbowKit"]],
+  ["Tooling", ["Git", "GitHub Actions", "Lighthouse CI", "ESLint", "Linux"]],
 ];
 
-const linkClass = "text-gold underline decoration-gold/40 underline-offset-4 transition-colors hover:decoration-gold";
+const eyebrow = "font-mono text-[0.7rem] tracking-wide text-mist uppercase [font-stretch:88%]";
+const sectionTitle = "font-display text-[clamp(2.1rem,5vw,3.6rem)] leading-[1.02] font-semibold tracking-[-0.025em] text-balance";
+const textLink = "text-glow-gold underline decoration-glow-gold/40 underline-offset-4 transition-colors hover:decoration-glow-gold";
 
 export default function Home() {
   return (
     <>
       <a
         href="#main"
-        className="sr-only z-10 rounded bg-ink px-4 py-2 font-display text-paper focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+        className="sr-only z-50 rounded bg-snow px-4 py-2 font-display text-night focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
       >
         Skip to content
       </a>
 
-      <header className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-6 sm:px-8">
-        <a href="#main" className="font-display text-lg font-semibold tracking-tight">
-          Patrick Uje
-        </a>
-        <nav aria-label="Sections" className="flex gap-5 font-mono text-[0.72rem] tracking-wide uppercase [font-stretch:88%] sm:gap-7">
-          <a href="#work" className="hover:text-gold">Work</a>
-          <a href="#practice" className="hover:text-gold">How I work</a>
-          <a href="#contact" className="hover:text-gold">Contact</a>
-        </nav>
-      </header>
+      <SiteHeader name={NAME} />
 
-      <main id="main" className="mx-auto max-w-6xl px-5 sm:px-8">
-        {/* Hero: the claim, then the evidence for it. */}
-        <section aria-labelledby="intro" className="pt-10 pb-20 sm:pt-16 sm:pb-28">
-          <p className="font-mono text-[0.72rem] tracking-wide text-graphite uppercase [font-stretch:88%]">
-            Frontend engineer · React, Next.js, TypeScript
-          </p>
-          <h1
-            id="intro"
-            className="mt-5 max-w-[17ch] font-display text-[clamp(2.4rem,6.2vw,4.9rem)] leading-[1.02] font-semibold tracking-[-0.025em] text-balance"
-          >
-            I build React interfaces that are tested, accessible and fast.
-          </h1>
-          <p className="mt-7 max-w-[34rem] text-lg leading-relaxed text-pretty text-graphite sm:text-xl">
-            Since {since}, maintainers of {repoCount} open-source projects have reviewed and merged{" "}
-            {pullRequests.length} of my pull requests. Each mark below is one of them.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 font-display font-semibold">
-            <a
-              href={`mailto:${EMAIL}`}
-              className="rounded-md bg-ink px-5 py-3 text-paper transition-colors hover:bg-[#223158]"
+      <main id="main">
+        {/* ---------------- Hero ---------------- */}
+        <section id="top" aria-labelledby="intro" className="relative isolate -mt-[4.25rem] overflow-hidden pt-[4.25rem]">
+          <div aria-hidden className="absolute -top-56 left-[10%] -z-10 h-[38rem] w-[52rem] rounded-full bg-[radial-gradient(closest-side,#3987e540,transparent)]" />
+          <div aria-hidden className="absolute top-24 -right-40 -z-10 h-[34rem] w-[40rem] rounded-full bg-[radial-gradient(closest-side,#9085e933,transparent)]" />
+          <div aria-hidden className="absolute bottom-0 left-1/3 -z-10 h-[20rem] w-[40rem] rounded-full bg-[radial-gradient(closest-side,#199e7026,transparent)]" />
+          <HeroGraph prs={graphPrs} />
+
+          <div className="relative mx-auto flex min-h-[min(52rem,calc(100dvh-4.25rem))] max-w-6xl flex-col justify-center px-5 py-20 sm:px-8">
+            <p className={`${eyebrow} flex items-center gap-2.5`}>
+              <span aria-hidden className="size-2 animate-pulse-dot rounded-full bg-glow-aqua text-glow-aqua motion-reduce:animate-none" />
+              Frontend engineer · open to freelance and full-time roles
+            </p>
+            <h1
+              id="intro"
+              className="mt-6 max-w-[15ch] font-display text-[clamp(2.7rem,7.4vw,6rem)] leading-[0.98] font-semibold tracking-[-0.035em]"
             >
-              Email me
-            </a>
-            <a href={GITHUB} className={linkClass}>
-              GitHub profile ↗
-            </a>
-          </div>
-
-          <div className="mt-14">
-            <MergeLedger rows={rows} latest={latest} />
-            <details className="group mt-4">
-              <summary className="cursor-pointer font-mono text-xs text-graphite marker:text-gold hover:text-ink">
-                Browse all {pullRequests.length} pull requests as a list
-              </summary>
-              <div className="mt-6 grid gap-10 md:grid-cols-2">
-                {rows.map((row) => (
-                  <section key={row.kind} aria-labelledby={`list-${row.kind}`}>
-                    <h2 id={`list-${row.kind}`} className="flex items-center gap-2 font-display font-semibold">
-                      <span aria-hidden className="size-2.5 rounded-[2px]" style={{ background: `var(--color-k-${row.kind})` }} />
-                      {row.label} <span className="font-mono text-xs font-normal text-graphite">{row.prs.length}</span>
-                    </h2>
-                    <ol className="mt-3 space-y-2.5 border-l border-rule pl-4">
-                      {[...row.prs].reverse().map((pr) => (
-                        <li key={pr.url} className="leading-snug">
-                          <a href={pr.url} className="hover:text-gold hover:underline">
-                            {pr.title}
-                          </a>
-                          <span className="mt-0.5 block font-mono text-[0.7rem] text-graphite">
-                            {pr.repo} · {pr.date}
-                          </span>
-                        </li>
-                      ))}
-                    </ol>
-                  </section>
-                ))}
-              </div>
-            </details>
-          </div>
-        </section>
-
-        <section id="work" aria-labelledby="work-title" className="scroll-mt-8 border-t border-rule py-20 sm:py-28">
-          <h2 id="work-title" className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-            Selected work
-          </h2>
-          <div className="mt-12 space-y-20 sm:space-y-28">
-            {projects.map((p) => (
-              <article key={p.name} className="grid gap-8 lg:grid-cols-[7fr_5fr] lg:gap-12">
-                <div className="self-start overflow-hidden rounded-lg border border-rule bg-panel shadow-[0_1px_0_#ccd3dd,0_18px_40px_-28px_#14203a66]">
-                  <Image
-                    src={p.image}
-                    alt={p.imageAlt}
-                    sizes="(min-width: 1024px) 640px, 100vw"
-                    placeholder="blur"
-                    className="h-auto w-full"
-                  />
-                </div>
-                <div>
-                  <h3 className="font-display text-[1.9rem] leading-tight font-semibold tracking-tight">{p.name}</h3>
-                  <p className="mt-3 text-lg leading-relaxed text-pretty">{p.summary}</p>
-                  <p className="mt-4 font-mono text-[0.72rem] leading-relaxed tracking-wide text-graphite uppercase [font-stretch:88%]">
-                    {p.role}
-                    {p.context && (
-                      <>
-                        <br />
-                        {p.context}
-                      </>
-                    )}
-                  </p>
-                  <ul className="mt-5 space-y-3 leading-relaxed">
-                    {p.work.map((w) => (
-                      <li key={w} className="relative pl-5 text-pretty before:absolute before:top-[0.7em] before:left-0 before:h-px before:w-2.5 before:bg-gold">
-                        {w}
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="mt-5 font-mono text-xs leading-relaxed text-graphite">{p.stack.join(" · ")}</p>
-                  <p className="mt-5 flex flex-wrap gap-x-6 gap-y-2 font-display font-semibold">
-                    {p.links.map((l) => (
-                      <a key={l.href} href={l.href} className={linkClass}>
-                        {l.label} ↗<span className="sr-only"> for {p.name}</span>
-                      </a>
-                    ))}
-                  </p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="practice" aria-labelledby="practice-title" className="scroll-mt-8 border-t border-rule py-20 sm:py-28">
-          <h2 id="practice-title" className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-            How I work
-          </h2>
-          <p className="mt-4 max-w-[36rem] text-lg leading-relaxed text-graphite">
-            Four habits, each with a merged pull request that shows it.
-          </p>
-          <div className="mt-12 grid gap-x-12 gap-y-12 md:grid-cols-2">
-            {practices.map(({ title, body, evidence, pr }) => (
-              <div key={title} className="border-t-2 border-ink pt-5">
-                <h3 className="font-display text-xl font-semibold">{title}</h3>
-                <p className="mt-3 leading-relaxed text-pretty">{body}</p>
-                <a href={pr.url} className="mt-4 block rounded-md border border-rule bg-panel px-4 py-3 transition-colors hover:border-gold">
-                  <span className="block font-mono text-[0.68rem] tracking-wide text-graphite uppercase [font-stretch:88%]">
-                    Evidence · {pr.repo} #{pr.url.split("/").pop()}
-                  </span>
-                  <span className="mt-1 block font-display leading-snug font-semibold">{evidence}</span>
+              {HEADLINE.map((w, i) => (
+                <span key={w.text}>
+                  <span
+                    className={w.from ? "sheen" : "word"}
+                    style={{ "--w": i, "--from": w.from, "--to": w.to } as CSSProperties}
+                  >
+                    {w.text}
+                  </span>{" "}
+                </span>
+              ))}
+            </h1>
+            <Reveal delay={500}>
+              <p className="mt-8 max-w-[36rem] text-lg leading-relaxed text-pretty text-mist sm:text-xl">
+                I’m {NAME}. The branching lines on this page are my real pull requests, merging back in the order
+                maintainers accepted them. Move your cursor through them.
+              </p>
+              <div className="mt-9 flex flex-wrap items-center gap-4 font-display font-semibold">
+                <a href={`mailto:${EMAIL}`} className="cta-ring rounded-full px-7 py-3.5 text-snow transition-transform hover:-translate-y-0.5">
+                  Email me
+                </a>
+                <a
+                  href="#work"
+                  className="rounded-full border border-rule bg-surface/60 px-7 py-3.5 text-snow backdrop-blur transition-colors hover:border-mist"
+                >
+                  See the work
+                </a>
+                <a href={GITHUB} className={`${textLink} px-2`}>
+                  GitHub ↗
                 </a>
               </div>
-            ))}
-          </div>
+            </Reveal>
 
-          <dl className="mt-20 grid border-t border-rule sm:grid-cols-[11rem_1fr]">
-            {skills.map(([term, detail]) => (
-              <div key={term} className="contents">
-                <dt className="border-b border-rule pt-4 font-mono text-[0.72rem] tracking-wide text-graphite uppercase [font-stretch:88%] sm:py-4">
-                  {term}
-                </dt>
-                <dd className="border-b border-rule pt-1 pb-4 sm:py-4 sm:pl-8">{detail}</dd>
+            <Reveal delay={700}>
+              <dl className="mt-16 grid max-w-2xl grid-cols-3 gap-6 border-t border-rule/70 pt-6">
+                {[
+                  { value: pullRequests.length, label: "Merged pull requests", color: "text-glow-blue" },
+                  { value: repoCount, label: "Open-source repos", color: "text-glow-aqua" },
+                  { value: projects.length, label: "Live products", color: "text-glow-gold" },
+                ].map((s) => (
+                  <div key={s.label} className="flex flex-col-reverse justify-end">
+                    <dt className={`${eyebrow} mt-1`}>{s.label}</dt>
+                    <dd className={`font-display text-4xl font-semibold tracking-tight sm:text-5xl ${s.color}`}>
+                      <CountUp value={s.value} />
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </Reveal>
+          </div>
+        </section>
+
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          {/* ---------------- Proof ---------------- */}
+          <section id="proof" aria-labelledby="proof-title" className="scroll-mt-20 py-24 sm:py-32">
+            <Reveal>
+              <p className={eyebrow}>The proof</p>
+              <h2 id="proof-title" className={`${sectionTitle} mt-4 max-w-[18ch]`}>
+                Every claim here links to merged code.
+              </h2>
+              <p className="mt-6 max-w-[38rem] text-lg leading-relaxed text-mist">
+                Since {since}, maintainers of {repoCount} open-source projects have reviewed and merged{" "}
+                {pullRequests.length} of my pull requests. Each square is one of them. Hover, tap or use the arrow keys.
+              </p>
+            </Reveal>
+            <Reveal delay={150} className="mt-12">
+              <MergeLedger rows={rows} latest={latest} />
+              <details className="group mt-5">
+                <summary className="cursor-pointer font-mono text-xs text-mist marker:text-glow-gold hover:text-snow">
+                  Browse all {pullRequests.length} pull requests as a list
+                </summary>
+                <div className="mt-8 grid gap-10 md:grid-cols-2">
+                  {rows.map((row) => (
+                    <section key={row.kind} aria-labelledby={`list-${row.kind}`}>
+                      <h3 id={`list-${row.kind}`} className="flex items-center gap-2 font-display font-semibold">
+                        <span aria-hidden className="size-2.5 rounded-[3px]" style={{ background: `var(--color-k-${row.kind})` }} />
+                        {row.label} <span className="font-mono text-xs font-normal text-mist">{row.prs.length}</span>
+                      </h3>
+                      <ol className="mt-3 space-y-2.5 border-l border-rule pl-4">
+                        {[...row.prs].reverse().map((pr) => (
+                          <li key={pr.url} className="leading-snug">
+                            <a href={pr.url} className="hover:text-glow-gold hover:underline">
+                              {pr.title}
+                            </a>
+                            <span className="mt-0.5 block font-mono text-[0.7rem] text-mist">
+                              {pr.repo} · {pr.date}
+                            </span>
+                          </li>
+                        ))}
+                      </ol>
+                    </section>
+                  ))}
+                </div>
+              </details>
+            </Reveal>
+          </section>
+
+          {/* ---------------- Work ---------------- */}
+          <section id="work" aria-labelledby="work-title" className="scroll-mt-20 border-t border-rule py-24 sm:py-32">
+            <Reveal>
+              <p className={eyebrow}>Selected work</p>
+              <h2 id="work-title" className={`${sectionTitle} mt-4 max-w-[16ch]`}>
+                Three products, live right now.
+              </h2>
+              <p className="mt-6 max-w-[36rem] text-lg leading-relaxed text-mist">
+                Hover a screenshot to scroll through the real page.
+              </p>
+            </Reveal>
+            <div className="mt-16 space-y-28 sm:space-y-36">
+              {projects.map((p, i) => (
+                <article
+                  key={p.name}
+                  className={`frame-wrap grid items-center gap-10 lg:gap-14 ${i % 2 ? "lg:grid-cols-[5fr_7fr]" : "lg:grid-cols-[7fr_5fr]"}`}
+                >
+                  <Reveal className={i % 2 ? "lg:order-2" : undefined}>
+                    <ProjectFrame
+                      image={p.image}
+                      alt={p.imageAlt}
+                      accent={p.accent}
+                      url={p.links.find((l) => l.label === "Live site")?.href}
+                    />
+                  </Reveal>
+                  <Reveal delay={120}>
+                    <p className="font-mono text-[0.7rem] tracking-wide uppercase [font-stretch:88%]" style={{ color: p.accent }}>
+                      {p.role}
+                    </p>
+                    <h3 className="mt-3 font-display text-[2.4rem] leading-none font-semibold tracking-tight">{p.name}</h3>
+                    <p className="mt-4 text-lg leading-relaxed text-pretty">{p.summary}</p>
+                    {p.context && <p className="mt-3 text-sm text-mist">{p.context}</p>}
+                    <ul className="mt-6 space-y-3 leading-relaxed text-mist">
+                      {p.work.map((w) => (
+                        <li key={w} className="flex gap-3 text-pretty">
+                          <span aria-hidden className="mt-[0.7em] h-px w-3 shrink-0" style={{ background: p.accent }} />
+                          {w}
+                        </li>
+                      ))}
+                    </ul>
+                    <ul className="mt-6 flex flex-wrap gap-2">
+                      {p.stack.map((s) => (
+                        <li key={s} className="rounded-full border border-rule bg-surface px-3 py-1 font-mono text-[0.68rem] text-mist">
+                          {s}
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="mt-7 flex flex-wrap gap-3 font-display font-semibold">
+                      {p.links.map((l) => (
+                        <a
+                          key={l.href}
+                          href={l.href}
+                          className="rounded-full border px-5 py-2.5 transition-colors hover:bg-white/5"
+                          style={{ borderColor: `${p.accent}66`, color: p.accent }}
+                        >
+                          {l.label} ↗<span className="sr-only"> for {p.name}</span>
+                        </a>
+                      ))}
+                    </p>
+                  </Reveal>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          {/* ---------------- How I work ---------------- */}
+          <section id="practice" aria-labelledby="practice-title" className="scroll-mt-20 border-t border-rule py-24 sm:py-32">
+            <Reveal>
+              <p className={eyebrow}>How I work</p>
+              <h2 id="practice-title" className={`${sectionTitle} mt-4 max-w-[18ch]`}>
+                Four habits, each with a pull request that shows it.
+              </h2>
+            </Reveal>
+            <div className="mt-14 grid gap-5 md:grid-cols-2">
+              {practices.map(({ title, body, evidence, pr, color }, i) => (
+                <Reveal key={title} delay={i * 90} className="h-full">
+                  <Spotlight color={color} className="flex h-full flex-col rounded-2xl border border-rule bg-surface p-6 sm:p-8">
+                    <h3 className="flex items-center gap-3 font-display text-2xl font-semibold">
+                      <span aria-hidden className="size-2.5 rounded-full" style={{ background: color, boxShadow: `0 0 12px ${color}` }} />
+                      {title}
+                    </h3>
+                    <p className="mt-3 leading-relaxed text-pretty text-mist">{body}</p>
+                    <a href={pr.url} className="group mt-auto block pt-6">
+                      <span className="block rounded-xl border border-rule bg-night/60 px-4 py-3 transition-colors group-hover:border-mist/60">
+                        <span className="block font-mono text-[0.65rem] tracking-wide text-mist uppercase [font-stretch:88%]">
+                          Evidence · {pr.repo} #{pr.url.split("/").pop()}
+                        </span>
+                        <span className="mt-1 block font-display leading-snug font-semibold">
+                          {evidence} <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+                        </span>
+                      </span>
+                    </a>
+                  </Spotlight>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal className="mt-20">
+              <h3 className="font-display text-2xl font-semibold">Toolkit</h3>
+              <dl className="mt-6 grid border-t border-rule sm:grid-cols-[11rem_1fr]">
+                {skills.map(([term, items]) => (
+                  <div key={term} className="contents">
+                    <dt className={`${eyebrow} border-rule pt-5 sm:border-b sm:py-5`}>{term}</dt>
+                    <dd className="flex flex-wrap gap-2 border-b border-rule pt-3 pb-5 sm:py-4">
+                      {items.map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full border border-rule bg-surface px-3 py-1 text-sm transition-colors hover:border-glow-blue/60 hover:text-glow-blue"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </dd>
+                  </div>
+                ))}
+                <div className="contents">
+                  <dt className={`${eyebrow} pt-5 sm:border-b sm:border-rule sm:py-5`}>Education</dt>
+                  <dd className="border-b border-rule pt-2 pb-5 sm:py-5">B.Sc. Computer Science, final year</dd>
+                </div>
+              </dl>
+            </Reveal>
+          </section>
+
+          {/* ---------------- Rates & availability ---------------- */}
+          <section id="rates" aria-labelledby="rates-title" className="scroll-mt-20 border-t border-rule py-24 sm:py-32">
+            <Reveal>
+              <p className={eyebrow}>Rates &amp; availability</p>
+              <h2 id="rates-title" className={`${sectionTitle} mt-4 max-w-[18ch]`}>
+                Clear prices, and when you can reach me.
+              </h2>
+              <p className="mt-6 max-w-[38rem] text-lg leading-relaxed text-mist">
+                Packages show starting prices. Your scope, custom features and deadline set the final quote, which you
+                get in writing before any work starts.
+              </p>
+            </Reveal>
+            <div className="mt-14">
+              <Rates />
+            </div>
+            <Reveal className="mt-16">
+              <Availability />
+            </Reveal>
+          </section>
+
+          {/* ---------------- Contact ---------------- */}
+          <section id="contact" aria-labelledby="contact-title" className="relative isolate scroll-mt-20 border-t border-rule py-28 sm:py-40">
+            <div aria-hidden className="absolute top-10 left-1/4 -z-10 h-80 w-[36rem] rounded-full bg-[radial-gradient(closest-side,#9085e92e,transparent)]" />
+            <Reveal>
+              <h2
+                id="contact-title"
+                className="max-w-[16ch] font-display text-[clamp(2.6rem,7vw,5.6rem)] leading-[0.98] font-semibold tracking-[-0.035em] text-balance"
+              >
+                Got something to build?{" "}
+                <span className="sheen" style={{ "--w": 0, "--from": "#6ea8ff", "--to": "#3ddba5" } as CSSProperties}>
+                  Let’s talk.
+                </span>
+              </h2>
+              <p className="mt-6 max-w-[34rem] text-lg leading-relaxed text-mist">
+                Hiring a frontend engineer, or need an interface built? Email me with what you’re building and I’ll tell
+                you how I’d approach it.
+              </p>
+              <div className="mt-10 flex flex-wrap items-center gap-4 font-display font-semibold">
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="cta-ring rounded-full px-7 py-4 text-snow transition-transform hover:-translate-y-0.5 sm:text-lg"
+                >
+                  {EMAIL}
+                </a>
+                <CopyEmail email={EMAIL} />
+                <a href={GITHUB} className={`${textLink} px-2`}>
+                  GitHub ↗
+                </a>
               </div>
-            ))}
-          </dl>
-        </section>
-
-        <section id="contact" aria-labelledby="contact-title" className="scroll-mt-8 border-t border-rule py-20 sm:py-28">
-          <h2 id="contact-title" className="max-w-[20ch] font-display text-[clamp(2rem,4.6vw,3.4rem)] leading-[1.05] font-semibold tracking-[-0.02em] text-balance">
-            Hiring a frontend engineer, or need an interface built?
-          </h2>
-          <p className="mt-5 max-w-[34rem] text-lg leading-relaxed text-graphite">
-            Email me with what you’re building and I’ll tell you how I’d approach it.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 font-display font-semibold">
-            <a href={`mailto:${EMAIL}`} className="rounded-md bg-ink px-5 py-3 text-paper transition-colors hover:bg-[#223158]">
-              {EMAIL}
-            </a>
-            <a href={GITHUB} className={linkClass}>
-              GitHub profile ↗
-            </a>
-          </div>
-        </section>
+            </Reveal>
+          </section>
+        </div>
       </main>
 
       <footer className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="flex flex-wrap justify-between gap-x-6 gap-y-2 border-t border-rule py-8 font-mono text-[0.7rem] text-graphite">
+        <div className="flex flex-wrap justify-between gap-x-6 gap-y-2 border-t border-rule py-8 font-mono text-[0.7rem] text-mist">
           <span>© {new Date().getFullYear()} Amune Patrick Uje</span>
           <span>Pull request data from GitHub, last merge {formatDate(pullRequests[latestIndex].mergedAt)}</span>
         </div>

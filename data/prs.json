@@ -1265,5 +1265,19 @@
     "repo": "Chibey-max/Mirror",
     "mergedAt": "2026-09-25T21:12:27Z",
     "kind": "fix"
+  },
+  {
+    "title": "perf(ui): one-canvas starfield, mask-free planet, adaptive resolution",
+    "url": "https://github.com/Chibey-max/Mirror/pull/29",
+    "repo": "Chibey-max/Mirror",
+    "mergedAt": "2026-09-26T11:20:22Z",
+    "kind": "ci"
+  },
+  {
+    "title": "feat(ui): smoother scrolling, interactive PnL chart, hover motion, centred planet",
+    "url": "https://github.com/Chibey-max/Mirror/pull/30",
+    "repo": "Chibey-max/Mirror",
+    "mergedAt": "2026-09-26T11:20:25Z",
+    "kind": "feature"
   }
 ]

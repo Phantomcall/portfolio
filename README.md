@@ -31,11 +31,21 @@ is computed from this file, so re-run it, commit the JSON and redeploy to update
 | Path | What it holds |
 | --- | --- |
 | `app/page.tsx` | Page content and layout |
-| `app/_components/merge-ledger.tsx` | The PR ledger: roving keyboard focus, hover/tap readout |
-| `lib/projects.ts` | Selected work copy, stack lists and links |
+| `app/_components/hero-graph.tsx` | Canvas "merge graph" behind the hero: real PRs branching and merging |
+| `app/_components/merge-ledger.tsx` | The PR ledger: roving keyboard focus, hover/tap readout, replay |
+| `app/_components/project-frame.tsx` | Browser frame that tilts and scrolls a full-page screenshot on hover |
+| `app/_components/rates.tsx` | Rates, packages and the USD/NGN toggle |
+| `app/_components/availability.tsx` | Live "available now" status and the weekly hours strip |
+| `app/_components/motion.tsx` | Scroll reveal, count-up, spotlight cards, copy email, sticky header |
+| `lib/rates.ts` | Hourly rate, package prices, deadline adjustments and terms |
+| `lib/availability.ts` | Working hours (UTC+1) and status logic |
+| `lib/projects.ts` | Selected work copy, stack lists, links and accent colours |
 | `lib/prs.ts` | PR types, kind order and date formatting |
-| `assets/work/` | Project screenshots (1440×810) |
-| `app/globals.css` | Colour, type tokens and the ledger's load animation |
+| `assets/work/` | Full-page project screenshots, 1440px wide |
+| `app/globals.css` | Colour and type tokens, and every keyframe animation |
+
+To change prices or hours, edit `lib/rates.ts` or `lib/availability.ts`. Nothing else
+needs to change. Every animation respects the visitor's reduced-motion setting.
 
 The five kind colours were checked for colour-blind separation in the row order used in
 `lib/prs.ts`. If you reorder the rows, re-check them.
