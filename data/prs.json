@@ -1,0 +1,1269 @@
+[
+  {
+    "title": "feat: implement admin dashboard (#23)",
+    "url": "https://github.com/Stellar-Trust-Escrow/stellar-trust-escrow/pull/342",
+    "repo": "Stellar-Trust-Escrow/stellar-trust-escrow",
+    "mergedAt": "2026-03-23T23:27:07Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: implement dashboard analytics widgets (#10)",
+    "url": "https://github.com/Stellar-Trust-Escrow/stellar-trust-escrow/pull/345",
+    "repo": "Stellar-Trust-Escrow/stellar-trust-escrow",
+    "mergedAt": "2026-03-24T00:59:01Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feature/issue 54 verify page",
+    "url": "https://github.com/QuorumProof/QuorumProof/pull/69",
+    "repo": "QuorumProof/QuorumProof",
+    "mergedAt": "2026-03-24T02:08:07Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: add credential dashboard page (issue #53)",
+    "url": "https://github.com/QuorumProof/QuorumProof/pull/83",
+    "repo": "QuorumProof/QuorumProof",
+    "mergedAt": "2026-03-24T02:26:17Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: implement wallet connection status indicator (#173)",
+    "url": "https://github.com/Stellar-Trust-Escrow/stellar-trust-escrow/pull/357",
+    "repo": "Stellar-Trust-Escrow/stellar-trust-escrow",
+    "mergedAt": "2026-03-24T06:51:47Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: implement wallet connection status indicator (#2)",
+    "url": "https://github.com/Stellar-Trust-Escrow/stellar-trust-escrow/pull/351",
+    "repo": "Stellar-Trust-Escrow/stellar-trust-escrow",
+    "mergedAt": "2026-03-24T11:51:04Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: implement admin dashboard (#194)",
+    "url": "https://github.com/Stellar-Trust-Escrow/stellar-trust-escrow/pull/355",
+    "repo": "Stellar-Trust-Escrow/stellar-trust-escrow",
+    "mergedAt": "2026-03-24T11:53:27Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feature/nv 0010 dashboard analytics widgets",
+    "url": "https://github.com/Stellar-Trust-Escrow/stellar-trust-escrow/pull/354",
+    "repo": "Stellar-Trust-Escrow/stellar-trust-escrow",
+    "mergedAt": "2026-03-24T11:54:30Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: implement dashboard analytics widgets (#181)",
+    "url": "https://github.com/Stellar-Trust-Escrow/stellar-trust-escrow/pull/358",
+    "repo": "Stellar-Trust-Escrow/stellar-trust-escrow",
+    "mergedAt": "2026-03-24T11:55:55Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feature/issue 52 typed contracts",
+    "url": "https://github.com/QuorumProof/QuorumProof/pull/87",
+    "repo": "QuorumProof/QuorumProof",
+    "mergedAt": "2026-03-24T12:09:04Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feature/refactor css variables usage for documentation",
+    "url": "https://github.com/Crowdfunding-DApp/stellar-raise-contracts/pull/456",
+    "repo": "Crowdfunding-DApp/stellar-raise-contracts",
+    "mergedAt": "2026-03-24T13:09:45Z",
+    "kind": "docs"
+  },
+  {
+    "title": "feat: implement add-test-for-frontend-global-error-boundaries-for-doc…",
+    "url": "https://github.com/Crowdfunding-DApp/stellar-raise-contracts/pull/455",
+    "repo": "Crowdfunding-DApp/stellar-raise-contracts",
+    "mergedAt": "2026-03-24T13:09:47Z",
+    "kind": "test"
+  },
+  {
+    "title": "feat: implement add-test-for-css-variables-usage-for-scripts with tes…",
+    "url": "https://github.com/Crowdfunding-DApp/stellar-raise-contracts/pull/470",
+    "repo": "Crowdfunding-DApp/stellar-raise-contracts",
+    "mergedAt": "2026-03-24T16:39:21Z",
+    "kind": "test"
+  },
+  {
+    "title": "feat: implement add-code-comments-to-frontend-header-responsive-styli…",
+    "url": "https://github.com/Crowdfunding-DApp/stellar-raise-contracts/pull/469",
+    "repo": "Crowdfunding-DApp/stellar-raise-contracts",
+    "mergedAt": "2026-03-24T16:39:58Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feature/issue 51 frontend scaffold",
+    "url": "https://github.com/QuorumProof/QuorumProof/pull/91",
+    "repo": "QuorumProof/QuorumProof",
+    "mergedAt": "2026-03-24T17:10:36Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: add dark/light mode toggle with localStorage persistence",
+    "url": "https://github.com/zeekman/Cross-Border-Payment-App-for-Africa/pull/180",
+    "repo": "zeekman/Cross-Border-Payment-App-for-Africa",
+    "mergedAt": "2026-03-25T03:54:59Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feature/nv 316 mobile responsive audit",
+    "url": "https://github.com/Stellar-Trust-Escrow/stellar-trust-escrow/pull/379",
+    "repo": "Stellar-Trust-Escrow/stellar-trust-escrow",
+    "mergedAt": "2026-03-25T05:25:06Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feat/response compression",
+    "url": "https://github.com/zeekman/Cross-Border-Payment-App-for-Africa/pull/181",
+    "repo": "zeekman/Cross-Border-Payment-App-for-Africa",
+    "mergedAt": "2026-03-25T10:17:08Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: integrate African Exchange API (NGN) for XLM/NGN rates",
+    "url": "https://github.com/StellarFlow-Network/stellarflow-backend/pull/46",
+    "repo": "StellarFlow-Network/stellarflow-backend",
+    "mergedAt": "2026-03-26T05:26:40Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feature/transaction memo tagging",
+    "url": "https://github.com/StellarFlow-Network/stellarflow-backend/pull/47",
+    "repo": "StellarFlow-Network/stellarflow-backend",
+    "mergedAt": "2026-03-26T05:27:47Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Implement flash loan functionality and migrate to Soroban SDK 21.0.0 …",
+    "url": "https://github.com/Kevin737866/stellar-defi-toolkit/pull/7",
+    "repo": "Kevin737866/stellar-defi-toolkit",
+    "mergedAt": "2026-03-27T05:35:47Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feature/issue 4 graphql api",
+    "url": "https://github.com/Kevin737866/-stellar-analytics-dashboard/pull/11",
+    "repo": "Kevin737866/-stellar-analytics-dashboard",
+    "mergedAt": "2026-03-27T05:36:55Z",
+    "kind": "feature"
+  },
+  {
+    "title": "docs: add security policy and link in README (issue #49)",
+    "url": "https://github.com/TwinTrustMainstay/Mainstay/pull/77",
+    "repo": "TwinTrustMainstay/Mainstay",
+    "mergedAt": "2026-03-27T13:40:08Z",
+    "kind": "docs"
+  },
+  {
+    "title": "Docs/issue 50 ttl documentation",
+    "url": "https://github.com/TwinTrustMainstay/Mainstay/pull/79",
+    "repo": "TwinTrustMainstay/Mainstay",
+    "mergedAt": "2026-03-27T13:40:30Z",
+    "kind": "docs"
+  },
+  {
+    "title": "docs: expand deployment runbook with verification and monitoring",
+    "url": "https://github.com/TwinTrustMainstay/Mainstay/pull/81",
+    "repo": "TwinTrustMainstay/Mainstay",
+    "mergedAt": "2026-03-27T13:40:47Z",
+    "kind": "docs"
+  },
+  {
+    "title": "[Frontend] Implement Demand Signal Panel #22",
+    "url": "https://github.com/Cylo-Traders/Agrocylo-Global/pull/91",
+    "repo": "Cylo-Traders/Agrocylo-Global",
+    "mergedAt": "2026-03-27T14:20:31Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feature/issue 193 quorum thresholds",
+    "url": "https://github.com/yosemite01/stellar-creator-portfolio/pull/237",
+    "repo": "yosemite01/stellar-creator-portfolio",
+    "mergedAt": "2026-03-28T17:38:12Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feature/issue 185 skill management",
+    "url": "https://github.com/yosemite01/stellar-creator-portfolio/pull/235",
+    "repo": "yosemite01/stellar-creator-portfolio",
+    "mergedAt": "2026-03-28T17:38:13Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feature/issue 200 governance treasury",
+    "url": "https://github.com/yosemite01/stellar-creator-portfolio/pull/236",
+    "repo": "yosemite01/stellar-creator-portfolio",
+    "mergedAt": "2026-03-28T17:38:53Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: optimistic UI updates for policy, claim, and vote submissions",
+    "url": "https://github.com/InsurNiffy/niff-Stellar-shurance/pull/261",
+    "repo": "InsurNiffy/niff-Stellar-shurance",
+    "mergedAt": "2026-03-28T20:47:25Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: React Query configuration — stale times, retry policy, backgrou…",
+    "url": "https://github.com/InsurNiffy/niff-Stellar-shurance/pull/263",
+    "repo": "InsurNiffy/niff-Stellar-shurance",
+    "mergedAt": "2026-03-28T20:48:13Z",
+    "kind": "feature"
+  },
+  {
+    "title": "reinstate_credit_line from Defaulted",
+    "url": "https://github.com/Creditra/Creditra-Contracts/pull/213",
+    "repo": "Creditra/Creditra-Contracts",
+    "mergedAt": "2026-03-31T15:21:47Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: add notification system and alerts (WIP)",
+    "url": "https://github.com/Creditra/Creditra-Frontend/pull/69",
+    "repo": "Creditra/Creditra-Frontend",
+    "mergedAt": "2026-03-31T15:51:38Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Configurable recipient permission to stop stream",
+    "url": "https://github.com/Streampay-Org/StreamPay-Contracts/pull/80",
+    "repo": "Streampay-Org/StreamPay-Contracts",
+    "mergedAt": "2026-03-31T15:57:08Z",
+    "kind": "feature"
+  },
+  {
+    "title": "StreamInfo schema evolution guidelines",
+    "url": "https://github.com/Streampay-Org/StreamPay-Contracts/pull/81",
+    "repo": "Streampay-Org/StreamPay-Contracts",
+    "mergedAt": "2026-03-31T15:57:52Z",
+    "kind": "docs"
+  },
+  {
+    "title": "Feature/commitment core benchmarks vs correctness document and test invariants exerc",
+    "url": "https://github.com/Commitlabs-Org/Commitlabs-Contracts/pull/421",
+    "repo": "Commitlabs-Org/Commitlabs-Contracts",
+    "mergedAt": "2026-04-01T12:19:32Z",
+    "kind": "test"
+  },
+  {
+    "title": "Feature/commitment nft align mint signature with core early exit penalty argument consistency across contracts",
+    "url": "https://github.com/Commitlabs-Org/Commitlabs-Contracts/pull/441",
+    "repo": "Commitlabs-Org/Commitlabs-Contracts",
+    "mergedAt": "2026-04-01T12:33:50Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Rate limiting per IP and per API key",
+    "url": "https://github.com/Streampay-Org/StreamPay-Backend/pull/66",
+    "repo": "Streampay-Org/StreamPay-Backend",
+    "mergedAt": "2026-04-01T18:17:53Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Webhook outbound: notify external systems on stream events",
+    "url": "https://github.com/Streampay-Org/StreamPay-Backend/pull/67",
+    "repo": "Streampay-Org/StreamPay-Backend",
+    "mergedAt": "2026-04-01T18:18:33Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: Add GitHub Actions cargo clippy -- -D warnings workflow for all contract crates",
+    "url": "https://github.com/Stellar-Trust-Escrow/stellar-trust-escrow/pull/744",
+    "repo": "Stellar-Trust-Escrow/stellar-trust-escrow",
+    "mergedAt": "2026-04-24T02:00:51Z",
+    "kind": "ci"
+  },
+  {
+    "title": "feat: add vulnerable/flash_loan_no_check crate (#34)",
+    "url": "https://github.com/Veritas-Vaults-Network/soroban-guard-contracts/pull/52",
+    "repo": "Veritas-Vaults-Network/soroban-guard-contracts",
+    "mergedAt": "2026-04-24T03:09:20Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feat/allowance not decremented",
+    "url": "https://github.com/Veritas-Vaults-Network/soroban-guard-contracts/pull/54",
+    "repo": "Veritas-Vaults-Network/soroban-guard-contracts",
+    "mergedAt": "2026-04-24T03:09:37Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feat/leaky events",
+    "url": "https://github.com/Veritas-Vaults-Network/soroban-guard-contracts/pull/62",
+    "repo": "Veritas-Vaults-Network/soroban-guard-contracts",
+    "mergedAt": "2026-04-24T03:10:39Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feat/no slippage",
+    "url": "https://github.com/Veritas-Vaults-Network/soroban-guard-contracts/pull/65",
+    "repo": "Veritas-Vaults-Network/soroban-guard-contracts",
+    "mergedAt": "2026-04-24T03:11:49Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: Add GitHub Actions cargo clippy -- -D warnings workflow for all contract crates",
+    "url": "https://github.com/Stellar-Trust-Escrow/stellar-trust-escrow/pull/758",
+    "repo": "Stellar-Trust-Escrow/stellar-trust-escrow",
+    "mergedAt": "2026-04-24T10:09:03Z",
+    "kind": "ci"
+  },
+  {
+    "title": "feat(credit): configure liquidity source with tests",
+    "url": "https://github.com/Creditra/Creditra-Contracts/pull/297",
+    "repo": "Creditra/Creditra-Contracts",
+    "mergedAt": "2026-04-25T07:07:13Z",
+    "kind": "test"
+  },
+  {
+    "title": "[MEDIUM] Optimize Large List Requests with Keyset Pagination (cursor) - Issue #563",
+    "url": "https://github.com/sublime247/mobile-money/pull/695",
+    "repo": "sublime247/mobile-money",
+    "mergedAt": "2026-04-25T15:48:19Z",
+    "kind": "ci"
+  },
+  {
+    "title": "[HARD] Implement Secure Key Multi-Sig Recovery Flow - Issue #595 (Design)",
+    "url": "https://github.com/sublime247/mobile-money/pull/696",
+    "repo": "sublime247/mobile-money",
+    "mergedAt": "2026-04-25T15:48:35Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(credit): optional per-borrower draw cooldown",
+    "url": "https://github.com/Creditra/Creditra-Contracts/pull/323",
+    "repo": "Creditra/Creditra-Contracts",
+    "mergedAt": "2026-04-26T16:53:51Z",
+    "kind": "feature"
+  },
+  {
+    "title": "test(credit): borrower key encoding and storage round-trip tests",
+    "url": "https://github.com/Creditra/Creditra-Contracts/pull/326",
+    "repo": "Creditra/Creditra-Contracts",
+    "mergedAt": "2026-04-26T16:55:06Z",
+    "kind": "test"
+  },
+  {
+    "title": "feat(credence_bond): add same-ledger guardrails for sensitive sequences",
+    "url": "https://github.com/CredenceOrg/Credence-Contracts/pull/319",
+    "repo": "CredenceOrg/Credence-Contracts",
+    "mergedAt": "2026-04-26T17:15:41Z",
+    "kind": "feature"
+  },
+  {
+    "title": "refactor(credence_bond): centralize attestation type validation",
+    "url": "https://github.com/CredenceOrg/Credence-Contracts/pull/329",
+    "repo": "CredenceOrg/Credence-Contracts",
+    "mergedAt": "2026-04-27T04:54:23Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(payment): Implement batch payment gas optimization with aggregated transfers",
+    "url": "https://github.com/Facil-Pay/facilpay-contracts/pull/169",
+    "repo": "Facil-Pay/facilpay-contracts",
+    "mergedAt": "2026-04-28T13:36:14Z",
+    "kind": "ci"
+  },
+  {
+    "title": "feat(payment): Implement rate limiting per merchant with configurable thresholds",
+    "url": "https://github.com/Facil-Pay/facilpay-contracts/pull/171",
+    "repo": "Facil-Pay/facilpay-contracts",
+    "mergedAt": "2026-04-28T13:37:37Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(refund): Add refund rate limiting per customer (#141)",
+    "url": "https://github.com/Facil-Pay/facilpay-contracts/pull/179",
+    "repo": "Facil-Pay/facilpay-contracts",
+    "mergedAt": "2026-04-28T17:02:59Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feature #240: Add smart wallet import/connect by contract address and fix tsconfig alias issues",
+    "url": "https://github.com/Galaxy-KJ/Galaxy-DevKit/pull/263",
+    "repo": "Galaxy-KJ/Galaxy-DevKit",
+    "mergedAt": "2026-04-29T06:29:00Z",
+    "kind": "fix"
+  },
+  {
+    "title": "Fix/issue 217 claim panic message tests",
+    "url": "https://github.com/ritik4ever/stellar-stream/pull/307",
+    "repo": "ritik4ever/stellar-stream",
+    "mergedAt": "2026-04-29T15:35:21Z",
+    "kind": "test"
+  },
+  {
+    "title": "feat: add PolicyCard component for list views",
+    "url": "https://github.com/InsurNiffy/niff-Stellar-shurance/pull/695",
+    "repo": "InsurNiffy/niff-Stellar-shurance",
+    "mergedAt": "2026-05-26T23:07:57Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: add claim appeal flow for rejected claims",
+    "url": "https://github.com/InsurNiffy/niff-Stellar-shurance/pull/698",
+    "repo": "InsurNiffy/niff-Stellar-shurance",
+    "mergedAt": "2026-05-26T23:10:52Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feat/operator role not enforced",
+    "url": "https://github.com/Veritas-Vaults-Network/soroban-guard-contracts/pull/344",
+    "repo": "Veritas-Vaults-Network/soroban-guard-contracts",
+    "mergedAt": "2026-05-27T05:29:18Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feat/delegate signer mismatch",
+    "url": "https://github.com/Veritas-Vaults-Network/soroban-guard-contracts/pull/345",
+    "repo": "Veritas-Vaults-Network/soroban-guard-contracts",
+    "mergedAt": "2026-05-27T05:36:01Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: add separate liveness and readiness health endpoints",
+    "url": "https://github.com/Footer-print/Stellar-Footprint-Service/pull/433",
+    "repo": "Footer-print/Stellar-Footprint-Service",
+    "mergedAt": "2026-05-27T11:42:24Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: add detailed cost breakdown endpoint",
+    "url": "https://github.com/Footer-print/Stellar-Footprint-Service/pull/434",
+    "repo": "Footer-print/Stellar-Footprint-Service",
+    "mergedAt": "2026-05-27T11:42:38Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(refund): Add customer refund history with full lifecycle tracking",
+    "url": "https://github.com/Facil-Pay/facilpay-contracts/pull/185",
+    "repo": "Facil-Pay/facilpay-contracts",
+    "mergedAt": "2026-05-28T04:57:22Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(refund): Implement refund notification system with on-chain event hooks",
+    "url": "https://github.com/Facil-Pay/facilpay-contracts/pull/184",
+    "repo": "Facil-Pay/facilpay-contracts",
+    "mergedAt": "2026-05-28T04:58:48Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: Add Comprehensive Automated Accessibility Scanner",
+    "url": "https://github.com/Stellar-Trust-Escrow/stellar-trust-escrow/pull/962",
+    "repo": "Stellar-Trust-Escrow/stellar-trust-escrow",
+    "mergedAt": "2026-05-28T16:53:04Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: Implement Nightly Automated Load and Stress Testing Suite",
+    "url": "https://github.com/Stellar-Trust-Escrow/stellar-trust-escrow/pull/963",
+    "repo": "Stellar-Trust-Escrow/stellar-trust-escrow",
+    "mergedAt": "2026-05-28T16:53:05Z",
+    "kind": "test"
+  },
+  {
+    "title": "feat: Implement Nightly Automated Load and Stress Testing Suite",
+    "url": "https://github.com/Stellar-Trust-Escrow/stellar-trust-escrow/pull/961",
+    "repo": "Stellar-Trust-Escrow/stellar-trust-escrow",
+    "mergedAt": "2026-05-28T16:53:05Z",
+    "kind": "test"
+  },
+  {
+    "title": "docs: fix RETRY_BACKOFF.md field names to match RetryConfig struct",
+    "url": "https://github.com/Haroldwonder/AnchorKit/pull/600",
+    "repo": "Haroldwonder/AnchorKit",
+    "mergedAt": "2026-05-29T15:43:36Z",
+    "kind": "docs"
+  },
+  {
+    "title": "feat(chat): real-time multi-language translation in chat (#617)",
+    "url": "https://github.com/yosemite01/stellar-creator-portfolio/pull/656",
+    "repo": "yosemite01/stellar-creator-portfolio",
+    "mergedAt": "2026-05-31T06:39:29Z",
+    "kind": "feature"
+  },
+  {
+    "title": "[Mobile] Develop Dynamic Accessibility Scaling Engine",
+    "url": "https://github.com/yosemite01/stellar-creator-portfolio/pull/658",
+    "repo": "yosemite01/stellar-creator-portfolio",
+    "mergedAt": "2026-05-31T06:41:35Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feature/issue 43 dnd widget layout",
+    "url": "https://github.com/Vero-protocol/vero-guardian-dashboard/pull/92",
+    "repo": "Vero-protocol/vero-guardian-dashboard",
+    "mergedAt": "2026-06-17T12:15:50Z",
+    "kind": "feature"
+  },
+  {
+    "title": "fix(auth): declare showPassword state and import Eye/EyeOff in auth f…",
+    "url": "https://github.com/Stellopay/stellopay-frontend/pull/263",
+    "repo": "Stellopay/stellopay-frontend",
+    "mergedAt": "2026-06-17T14:19:03Z",
+    "kind": "fix"
+  },
+  {
+    "title": "fix(property-token): O(1) mapping lookup for has_pending_bridge_request",
+    "url": "https://github.com/MERIDIAN-CITY/Meridians-verse/pull/470",
+    "repo": "MERIDIAN-CITY/Meridians-verse",
+    "mergedAt": "2026-06-18T09:22:15Z",
+    "kind": "fix"
+  },
+  {
+    "title": "Feature/notification preferences issue 29",
+    "url": "https://github.com/MyFanss/MyFanss_Backend/pull/39",
+    "repo": "MyFanss/MyFanss_Backend",
+    "mergedAt": "2026-06-20T08:47:05Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: implement DAO-style governance system (#387)",
+    "url": "https://github.com/StelTade/SwapTrade-Backend/pull/392",
+    "repo": "StelTade/SwapTrade-Backend",
+    "mergedAt": "2026-06-20T13:00:17Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Typecheck fixes main",
+    "url": "https://github.com/JointSave-org/Joint_Save/pull/78",
+    "repo": "JointSave-org/Joint_Save",
+    "mergedAt": "2026-06-20T19:27:36Z",
+    "kind": "fix"
+  },
+  {
+    "title": "Feature/password reset clean 23",
+    "url": "https://github.com/MyFanss/MyFanss_Backend/pull/43",
+    "repo": "MyFanss/MyFanss_Backend",
+    "mergedAt": "2026-06-21T14:50:11Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feat/ipfs event offloading 174",
+    "url": "https://github.com/Open-audit-foundation/Open-Audit/pull/184",
+    "repo": "Open-audit-foundation/Open-Audit",
+    "mergedAt": "2026-06-21T21:10:35Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(score): add score jump anomaly detection with configurable thres…",
+    "url": "https://github.com/Ledger-Lenz/Ledgerlens-contract/pull/89",
+    "repo": "Ledger-Lenz/Ledgerlens-contract",
+    "mergedAt": "2026-06-22T10:44:00Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Oracle error refactor",
+    "url": "https://github.com/Stellar-Trust-Escrow/stellar-trust-escrow/pull/1017",
+    "repo": "Stellar-Trust-Escrow/stellar-trust-escrow",
+    "mergedAt": "2026-06-22T11:03:36Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: add GraphQL API with core queries (creator, creators, tier, tie…",
+    "url": "https://github.com/laugh-tales/starpass-backend/pull/152",
+    "repo": "laugh-tales/starpass-backend",
+    "mergedAt": "2026-06-22T12:31:18Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: add unit tests for auth, beneficiary, campaign, distribution, a…",
+    "url": "https://github.com/aid-linkk/aidlink-backend/pull/101",
+    "repo": "aid-linkk/aidlink-backend",
+    "mergedAt": "2026-06-22T21:17:32Z",
+    "kind": "test"
+  },
+  {
+    "title": "feat: define EAS build profiles for dev, preview, and production",
+    "url": "https://github.com/Adamantine-guild/guildpass-mobile/pull/35",
+    "repo": "Adamantine-guild/guildpass-mobile",
+    "mergedAt": "2026-06-22T21:47:05Z",
+    "kind": "ci"
+  },
+  {
+    "title": "feat(backend): migration framework with rollback support",
+    "url": "https://github.com/AetherEdu/AetherMint/pull/157",
+    "repo": "AetherEdu/AetherMint",
+    "mergedAt": "2026-06-23T07:40:51Z",
+    "kind": "feature"
+  },
+  {
+    "title": "ci: add lint/typecheck/test/build GitHub Actions workflow",
+    "url": "https://github.com/Grainlify/Grainlify-Frontend/pull/208",
+    "repo": "Grainlify/Grainlify-Frontend",
+    "mergedAt": "2026-06-23T19:32:15Z",
+    "kind": "ci"
+  },
+  {
+    "title": "test(compliance): add AlreadyInitialized guard test",
+    "url": "https://github.com/WHEELBACK/COMEBACKHERE-contracts/pull/133",
+    "repo": "WHEELBACK/COMEBACKHERE-contracts",
+    "mergedAt": "2026-06-25T14:05:22Z",
+    "kind": "test"
+  },
+  {
+    "title": "feat(compliance): add revoke_allow entrypoint for soft de-listing",
+    "url": "https://github.com/WHEELBACK/COMEBACKHERE-contracts/pull/134",
+    "repo": "WHEELBACK/COMEBACKHERE-contracts",
+    "mergedAt": "2026-06-25T14:06:16Z",
+    "kind": "feature"
+  },
+  {
+    "title": "fix(settlement): fix 41+ pre-existing SDK 22 compilation errors in te…",
+    "url": "https://github.com/CalloraOrg/Callora-Contracts/pull/459",
+    "repo": "CalloraOrg/Callora-Contracts",
+    "mergedAt": "2026-06-26T04:25:54Z",
+    "kind": "fix"
+  },
+  {
+    "title": "feat(vault, settlement, revenue_pool): add gas profiling harness (#412)",
+    "url": "https://github.com/CalloraOrg/Callora-Contracts/pull/454",
+    "repo": "CalloraOrg/Callora-Contracts",
+    "mergedAt": "2026-06-26T04:25:54Z",
+    "kind": "test"
+  },
+  {
+    "title": "test(compliance): AlreadyInitialized error on double initialize",
+    "url": "https://github.com/WHEELBACK/COMEBACKHERE-contracts/pull/171",
+    "repo": "WHEELBACK/COMEBACKHERE-contracts",
+    "mergedAt": "2026-06-26T09:52:57Z",
+    "kind": "test"
+  },
+  {
+    "title": "feat: build escrow summary card component with status badges and action highlights",
+    "url": "https://github.com/Devdave-0x/stellar-trust-escrow/pull/156",
+    "repo": "Devdave-0x/stellar-trust-escrow",
+    "mergedAt": "2026-06-26T10:38:13Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: add copy-to-clipboard buttons for addresses, escrow IDs, and transaction hashes",
+    "url": "https://github.com/Devdave-0x/stellar-trust-escrow/pull/157",
+    "repo": "Devdave-0x/stellar-trust-escrow",
+    "mergedAt": "2026-06-26T10:38:23Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feat/validate feature flag entrypoints 797",
+    "url": "https://github.com/AgesEmpire/StellarSwipe-Backends/pull/808",
+    "repo": "AgesEmpire/StellarSwipe-Backends",
+    "mergedAt": "2026-06-28T03:59:53Z",
+    "kind": "feature"
+  },
+  {
+    "title": "docs(sdk): document transactions_search with rustdoc and example",
+    "url": "https://github.com/Synapse-bridgez/synapse-core/pull/739",
+    "repo": "Synapse-bridgez/synapse-core",
+    "mergedAt": "2026-06-28T07:19:57Z",
+    "kind": "docs"
+  },
+  {
+    "title": "feat(sdk): add settlements resource with list() and get()",
+    "url": "https://github.com/Synapse-bridgez/synapse-core/pull/740",
+    "repo": "Synapse-bridgez/synapse-core",
+    "mergedAt": "2026-06-28T07:21:24Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(graphql): implement APQ with Redis-backed persisted queries",
+    "url": "https://github.com/Healthy-Stellar/Healthy-Stellar-backend/pull/725",
+    "repo": "Healthy-Stellar/Healthy-Stellar-backend",
+    "mergedAt": "2026-06-28T12:53:29Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(records): add digital signature verification for PDF documents",
+    "url": "https://github.com/Healthy-Stellar/Healthy-Stellar-backend/pull/726",
+    "repo": "Healthy-Stellar/Healthy-Stellar-backend",
+    "mergedAt": "2026-06-28T12:56:10Z",
+    "kind": "feature"
+  },
+  {
+    "title": "# Scheduled Audit for Weak Webhook Subscriber Secrets closes #798",
+    "url": "https://github.com/AgesEmpire/StellarSwipe-Backends/pull/810",
+    "repo": "AgesEmpire/StellarSwipe-Backends",
+    "mergedAt": "2026-06-28T15:38:06Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Add reentrancy bypass attempt tests (issue #458)",
+    "url": "https://github.com/Navin-xmr/navin-contracts/pull/511",
+    "repo": "Navin-xmr/navin-contracts",
+    "mergedAt": "2026-06-28T15:39:10Z",
+    "kind": "test"
+  },
+  {
+    "title": "test(shipment): implement all-path settlement tests (#459)",
+    "url": "https://github.com/Navin-xmr/navin-contracts/pull/512",
+    "repo": "Navin-xmr/navin-contracts",
+    "mergedAt": "2026-06-28T15:44:49Z",
+    "kind": "test"
+  },
+  {
+    "title": "fix(compiler): validate toolchain against allowlist for security",
+    "url": "https://github.com/Soroban-Smart-Block-Explorer/Soroban-Smart-Block-Backend-/pull/524",
+    "repo": "Soroban-Smart-Block-Explorer/Soroban-Smart-Block-Backend-",
+    "mergedAt": "2026-06-28T22:30:04Z",
+    "kind": "fix"
+  },
+  {
+    "title": "Fix compiler resource limits 489",
+    "url": "https://github.com/Soroban-Smart-Block-Explorer/Soroban-Smart-Block-Backend-/pull/525",
+    "repo": "Soroban-Smart-Block-Explorer/Soroban-Smart-Block-Backend-",
+    "mergedAt": "2026-06-28T22:30:54Z",
+    "kind": "fix"
+  },
+  {
+    "title": "perf: batched, transactional Horizon event ingest with preserved idempotency",
+    "url": "https://github.com/Disciplr-Org/Disciplr-backend/pull/932",
+    "repo": "Disciplr-Org/Disciplr-backend",
+    "mergedAt": "2026-06-29T03:26:03Z",
+    "kind": "ci"
+  },
+  {
+    "title": "refactor: update QR scanner to use current Expo Camera API",
+    "url": "https://github.com/Adamantine-guild/guildpass-mobile/pull/58",
+    "repo": "Adamantine-guild/guildpass-mobile",
+    "mergedAt": "2026-06-29T05:06:56Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: comprehensive observability framework with structured diagnostics, performance telemetry, and runtime metrics",
+    "url": "https://github.com/Axionvera/axionvera-dashboard/pull/275",
+    "repo": "Axionvera/axionvera-dashboard",
+    "mergedAt": "2026-06-29T09:31:18Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: Implement GraphQL API for Stellar Data Queries and Aggregations…",
+    "url": "https://github.com/Kevin737866/stellar-defi-toolkit/pull/10",
+    "repo": "Kevin737866/stellar-defi-toolkit",
+    "mergedAt": "2026-06-29T19:34:43Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: implement SIP-4 metadata standard with get_contract_metadata() …",
+    "url": "https://github.com/Trust-Analysis/Tokenized-Fractional-/pull/230",
+    "repo": "Trust-Analysis/Tokenized-Fractional-",
+    "mergedAt": "2026-06-30T04:35:16Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat: add comprehensive event indexing for off-chain tracking",
+    "url": "https://github.com/Trust-Analysis/Tokenized-Fractional-/pull/229",
+    "repo": "Trust-Analysis/Tokenized-Fractional-",
+    "mergedAt": "2026-06-30T04:35:27Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Feature/issue 460 created at relativity tests",
+    "url": "https://github.com/Navin-xmr/navin-contracts/pull/513",
+    "repo": "Navin-xmr/navin-contracts",
+    "mergedAt": "2026-06-30T06:09:34Z",
+    "kind": "test"
+  },
+  {
+    "title": "feat: add AtCheckpoint loop validation and consistency checks (closes #505)",
+    "url": "https://github.com/Navin-xmr/navin-contracts/pull/514",
+    "repo": "Navin-xmr/navin-contracts",
+    "mergedAt": "2026-07-01T17:02:09Z",
+    "kind": "feature"
+  },
+  {
+    "title": "fix(governance): snapshot eligible voters and resolve via quorum instead of 100% turnout (#34)",
+    "url": "https://github.com/water-credits/water-credits-contracts/pull/43",
+    "repo": "water-credits/water-credits-contracts",
+    "mergedAt": "2026-07-17T21:10:58Z",
+    "kind": "fix"
+  },
+  {
+    "title": "feat(frontend): add Storybook with stories, a11y addon, interaction t…",
+    "url": "https://github.com/Stellar-Trust-Escrow/stellar-trust-escrow/pull/1478",
+    "repo": "Stellar-Trust-Escrow/stellar-trust-escrow",
+    "mergedAt": "2026-07-19T09:16:55Z",
+    "kind": "test"
+  },
+  {
+    "title": "perf(frontend): Lighthouse CI gate, next/image optimization & below-fold code-splitting",
+    "url": "https://github.com/Stellar-Trust-Escrow/stellar-trust-escrow/pull/1481",
+    "repo": "Stellar-Trust-Escrow/stellar-trust-escrow",
+    "mergedAt": "2026-07-19T09:18:21Z",
+    "kind": "ci"
+  },
+  {
+    "title": "feat: async escrow-history export (CSV/XLSX) with background jobs and signed downloads",
+    "url": "https://github.com/Stellar-Trust-Escrow/stellar-trust-escrow/pull/1486",
+    "repo": "Stellar-Trust-Escrow/stellar-trust-escrow",
+    "mergedAt": "2026-07-20T06:18:39Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(auth): harden wallet-signature auth with nonce store & replay pr…",
+    "url": "https://github.com/trustflow-protocol/trustflow-backend/pull/175",
+    "repo": "trustflow-protocol/trustflow-backend",
+    "mergedAt": "2026-07-21T13:37:12Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Fix/hsts preload always enabled",
+    "url": "https://github.com/CredenceOrg/Credence-Backend/pull/800",
+    "repo": "CredenceOrg/Credence-Backend",
+    "mergedAt": "2026-07-24T13:26:37Z",
+    "kind": "fix"
+  },
+  {
+    "title": "fix: validate scopes against ApiScope enum in normalizeScopes",
+    "url": "https://github.com/Disciplr-Org/Disciplr-backend/pull/1153",
+    "repo": "Disciplr-Org/Disciplr-backend",
+    "mergedAt": "2026-07-24T18:19:59Z",
+    "kind": "fix"
+  },
+  {
+    "title": "docs: add NatSpec-style rustdoc to betting public entrypoints",
+    "url": "https://github.com/Predictify-org/predictify-contracts/pull/1025",
+    "repo": "Predictify-org/predictify-contracts",
+    "mergedAt": "2026-07-26T21:07:12Z",
+    "kind": "docs"
+  },
+  {
+    "title": "feat(#1058): add secure ownership transfer with two-party confirmation",
+    "url": "https://github.com/ANTAPEX/Soroban-Registry/pull/1103",
+    "repo": "ANTAPEX/Soroban-Registry",
+    "mergedAt": "2026-07-26T23:17:14Z",
+    "kind": "feature"
+  },
+  {
+    "title": "test: betting err stability",
+    "url": "https://github.com/Predictify-org/predictify-contracts/pull/1090",
+    "repo": "Predictify-org/predictify-contracts",
+    "mergedAt": "2026-07-28T06:42:27Z",
+    "kind": "test"
+  },
+  {
+    "title": "Docs/add contributing and templates",
+    "url": "https://github.com/C-Address-Onboarding-Bridge/C-Address-Onboarding-Bridge--Frontend-/pull/310",
+    "repo": "C-Address-Onboarding-Bridge/C-Address-Onboarding-Bridge--Frontend-",
+    "mergedAt": "2026-07-28T11:04:33Z",
+    "kind": "docs"
+  },
+  {
+    "title": "Add cargo-fuzz target for get_events arithmetic testing (#108)",
+    "url": "https://github.com/john2ydep2-gt/PERO-J/pull/136",
+    "repo": "john2ydep2-gt/PERO-J",
+    "mergedAt": "2026-07-28T13:13:16Z",
+    "kind": "test"
+  },
+  {
+    "title": "perf: refactor protocol stats fetching to use @tanstack/react-query c…",
+    "url": "https://github.com/ultimate-enclosure/whitechain-app/pull/118",
+    "repo": "ultimate-enclosure/whitechain-app",
+    "mergedAt": "2026-07-30T00:16:12Z",
+    "kind": "ci"
+  },
+  {
+    "title": "feat: implement WebSocket real-time data integration for TVL and swap…",
+    "url": "https://github.com/ultimate-enclosure/whitechain-app/pull/119",
+    "repo": "ultimate-enclosure/whitechain-app",
+    "mergedAt": "2026-07-30T00:33:53Z",
+    "kind": "feature"
+  },
+  {
+    "title": "fix: validate limit/offset query params on intent listing",
+    "url": "https://github.com/stellar-vortex-protocol/vortex-backend/pull/158",
+    "repo": "stellar-vortex-protocol/vortex-backend",
+    "mergedAt": "2026-07-30T02:23:47Z",
+    "kind": "fix"
+  },
+  {
+    "title": "fix: validate fillAmount format before BigInt parsing",
+    "url": "https://github.com/stellar-vortex-protocol/vortex-backend/pull/159",
+    "repo": "stellar-vortex-protocol/vortex-backend",
+    "mergedAt": "2026-07-30T02:24:12Z",
+    "kind": "fix"
+  },
+  {
+    "title": "fix: defensively guard minDstAmount BigInt parsing in fill()",
+    "url": "https://github.com/stellar-vortex-protocol/vortex-backend/pull/160",
+    "repo": "stellar-vortex-protocol/vortex-backend",
+    "mergedAt": "2026-07-30T02:25:02Z",
+    "kind": "fix"
+  },
+  {
+    "title": "feat: add topic-based filtering to the intents WebSocket gateway",
+    "url": "https://github.com/stellar-vortex-protocol/vortex-backend/pull/161",
+    "repo": "stellar-vortex-protocol/vortex-backend",
+    "mergedAt": "2026-07-30T02:25:49Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Fix 1017 filter players pagination",
+    "url": "https://github.com/scout-off/scout-off-contracts/pull/1029",
+    "repo": "scout-off/scout-off-contracts",
+    "mergedAt": "2026-07-30T05:57:49Z",
+    "kind": "fix"
+  },
+  {
+    "title": "fix: add role indicator badge on will detail page (#112)",
+    "url": "https://github.com/SoroWill/sorowill-app/pull/162",
+    "repo": "SoroWill/sorowill-app",
+    "mergedAt": "2026-07-30T08:53:43Z",
+    "kind": "fix"
+  },
+  {
+    "title": "fix: sum all matching beneficiary shares for duplicate entries (#113)",
+    "url": "https://github.com/SoroWill/sorowill-app/pull/163",
+    "repo": "SoroWill/sorowill-app",
+    "mergedAt": "2026-07-30T08:54:14Z",
+    "kind": "fix"
+  },
+  {
+    "title": "fix: implement invoice get_by_account method and fix test compilation",
+    "url": "https://github.com/ancore-org/ancore/pull/1188",
+    "repo": "ancore-org/ancore",
+    "mergedAt": "2026-07-31T01:39:58Z",
+    "kind": "fix"
+  },
+  {
+    "title": "Add metrics scraping for router-access, router-timelock, router-multicall (closes #195)",
+    "url": "https://github.com/StellarRouter/StellarRouter/pull/207",
+    "repo": "StellarRouter/StellarRouter",
+    "mergedAt": "2026-08-18T07:58:43Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Harden eco-token set_minter: emit event + reject minter==admin (closes #54)",
+    "url": "https://github.com/ecotask-network/EcoTask-contract/pull/58",
+    "repo": "ecotask-network/EcoTask-contract",
+    "mergedAt": "2026-08-18T11:36:12Z",
+    "kind": "fix"
+  },
+  {
+    "title": "Add restore_*_record entrypoints for archived-storage recovery (#1066)",
+    "url": "https://github.com/scout-off/scout-off-contracts/pull/1088",
+    "repo": "scout-off/scout-off-contracts",
+    "mergedAt": "2026-08-18T21:16:56Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Add adversarial-atomicity chaos tests for registration/progress (#1057)",
+    "url": "https://github.com/scout-off/scout-off-contracts/pull/1089",
+    "repo": "scout-off/scout-off-contracts",
+    "mergedAt": "2026-08-18T21:21:13Z",
+    "kind": "test"
+  },
+  {
+    "title": "Standardize cross-contract event emission (#642)",
+    "url": "https://github.com/MERIDIAN-CITY/Meridians-verse/pull/644",
+    "repo": "MERIDIAN-CITY/Meridians-verse",
+    "mergedAt": "2026-08-19T08:27:06Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Validate StellarKraal::initialize() config parameters",
+    "url": "https://github.com/Stellar-kraal/stellar-kraal-contract/pull/148",
+    "repo": "Stellar-kraal/stellar-kraal-contract",
+    "mergedAt": "2026-08-19T10:23:53Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Add backend HEALTHCHECK and SIGTERM graceful shutdown",
+    "url": "https://github.com/Stellar-kraal/stellar-kraal-contract/pull/147",
+    "repo": "Stellar-kraal/stellar-kraal-contract",
+    "mergedAt": "2026-08-19T11:36:50Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Implement StellarStream core contract + load/stress test suite (closes #1483)",
+    "url": "https://github.com/StellarStream-HQ/StellarStream/pull/1515",
+    "repo": "StellarStream-HQ/StellarStream",
+    "mergedAt": "2026-08-19T12:41:45Z",
+    "kind": "test"
+  },
+  {
+    "title": "feat: add GET /api/health database health check endpoint (#65)",
+    "url": "https://github.com/AnonVote/anonvote/pull/67",
+    "repo": "AnonVote/anonvote",
+    "mergedAt": "2026-08-20T05:34:53Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Add server-side vault-name validation (#13)",
+    "url": "https://github.com/Vaulty-X/Vaulty-App/pull/28",
+    "repo": "Vaulty-X/Vaulty-App",
+    "mergedAt": "2026-08-20T08:04:53Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(ci): Automated Gas Profiling & Performance Regression Dashboard (#164)",
+    "url": "https://github.com/spoo-vault/spoovault/pull/169",
+    "repo": "spoo-vault/spoovault",
+    "mergedAt": "2026-08-21T04:21:53Z",
+    "kind": "ci"
+  },
+  {
+    "title": "feat(verifier): enrich verified event with model_hash and output (Closes #63)",
+    "url": "https://github.com/ZKML-Soroban/ZKML-Soroban/pull/68",
+    "repo": "ZKML-Soroban/ZKML-Soroban",
+    "mergedAt": "2026-08-21T16:24:58Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(offline): add freshness/expiry policy prototype for cached emergency cards (#161)",
+    "url": "https://github.com/Lafiya-xyz/Lafiya-web/pull/176",
+    "repo": "Lafiya-xyz/Lafiya-web",
+    "mergedAt": "2026-08-21T16:33:04Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(ci): Slither, Mythril & Cargo-Audit Static Security Pipeline (#148)",
+    "url": "https://github.com/spoo-vault/spoovault/pull/172",
+    "repo": "spoo-vault/spoovault",
+    "mergedAt": "2026-08-22T07:26:09Z",
+    "kind": "ci"
+  },
+  {
+    "title": "feat(#116): harden /compile endpoint with sandboxing, timeouts, and injection guards",
+    "url": "https://github.com/MetroLogic/lumens-block/pull/130",
+    "repo": "MetroLogic/lumens-block",
+    "mergedAt": "2026-08-22T13:46:09Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Extend TTL for ReferralCount/ReferralEarnings (read + write bump)",
+    "url": "https://github.com/SPulse-Org/SPulse-Contract/pull/109",
+    "repo": "SPulse-Org/SPulse-Contract",
+    "mergedAt": "2026-08-22T18:42:57Z",
+    "kind": "feature"
+  },
+  {
+    "title": "fix(backfill): restrict backfill operations to admin users",
+    "url": "https://github.com/ZyntariHQ/Invoisio/pull/452",
+    "repo": "ZyntariHQ/Invoisio",
+    "mergedAt": "2026-08-23T11:18:44Z",
+    "kind": "fix"
+  },
+  {
+    "title": "feat(transactions): add waitForTransaction polling helper",
+    "url": "https://github.com/Axionvera/axionvera-sdk/pull/397",
+    "repo": "Axionvera/axionvera-sdk",
+    "mergedAt": "2026-08-23T11:22:39Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(venice): add response caching and request deduplication (#275)",
+    "url": "https://github.com/Epta-Node/ai-net/pull/291",
+    "repo": "Epta-Node/ai-net",
+    "mergedAt": "2026-08-24T02:42:41Z",
+    "kind": "feature"
+  },
+  {
+    "title": "fix(hooks): re-run useTransactionSimulation when inputs change while enabled (#1236)",
+    "url": "https://github.com/astera-hq/Astera/pull/1242",
+    "repo": "astera-hq/Astera",
+    "mergedAt": "2026-08-24T18:41:29Z",
+    "kind": "fix"
+  },
+  {
+    "title": "fix(account): make AccountDataEntry.isValid reflect real base64/UTF-8 validity (#70)",
+    "url": "https://github.com/Vero-protocol/vero-sdk/pull/80",
+    "repo": "Vero-protocol/vero-sdk",
+    "mergedAt": "2026-08-24T19:41:12Z",
+    "kind": "fix"
+  },
+  {
+    "title": "fix(rpc): recompute clock per endpoint attempt (#74)",
+    "url": "https://github.com/Vero-protocol/vero-sdk/pull/79",
+    "repo": "Vero-protocol/vero-sdk",
+    "mergedAt": "2026-08-24T19:41:28Z",
+    "kind": "fix"
+  },
+  {
+    "title": "Guard against self-approval by the quest creator (#2287)",
+    "url": "https://github.com/EarnQuestOne/stellar_Earn/pull/2308",
+    "repo": "EarnQuestOne/stellar_Earn",
+    "mergedAt": "2026-08-26T13:23:43Z",
+    "kind": "fix"
+  },
+  {
+    "title": "fix(lifecycle): remove duplicate Priority enum definition",
+    "url": "https://github.com/TwinTrustMainstay/Mainstay/pull/1332",
+    "repo": "TwinTrustMainstay/Mainstay",
+    "mergedAt": "2026-08-27T23:28:01Z",
+    "kind": "fix"
+  },
+  {
+    "title": "fix(lifecycle): remove duplicate DataKey::CollateralValuationHistory variant",
+    "url": "https://github.com/TwinTrustMainstay/Mainstay/pull/1335",
+    "repo": "TwinTrustMainstay/Mainstay",
+    "mergedAt": "2026-08-28T09:45:39Z",
+    "kind": "fix"
+  },
+  {
+    "title": "fix(lifecycle): remove duplicate DataKey::CollateralValuationHistory variant",
+    "url": "https://github.com/TwinTrustMainstay/Mainstay/pull/1334",
+    "repo": "TwinTrustMainstay/Mainstay",
+    "mergedAt": "2026-08-28T09:46:05Z",
+    "kind": "fix"
+  },
+  {
+    "title": "fix(lifecycle): remove duplicate Priority enum definition",
+    "url": "https://github.com/TwinTrustMainstay/Mainstay/pull/1333",
+    "repo": "TwinTrustMainstay/Mainstay",
+    "mergedAt": "2026-08-28T09:56:07Z",
+    "kind": "fix"
+  },
+  {
+    "title": "fix(checks): guard checks require gating context, not mere presence (#367 #368 #369)",
+    "url": "https://github.com/SorobanGuard/Guard-CLI/pull/441",
+    "repo": "SorobanGuard/Guard-CLI",
+    "mergedAt": "2026-08-28T16:03:28Z",
+    "kind": "fix"
+  },
+  {
+    "title": "Reconcile duplicate backend/ and mergemint-backend/ directories (#668)",
+    "url": "https://github.com/mergemint-mint/mergemint-contracts/pull/827",
+    "repo": "mergemint-mint/mergemint-contracts",
+    "mergedAt": "2026-08-30T16:14:38Z",
+    "kind": "fix"
+  },
+  {
+    "title": "Rate-limit the self_claim route (#670)",
+    "url": "https://github.com/mergemint-mint/mergemint-contracts/pull/826",
+    "repo": "mergemint-mint/mergemint-contracts",
+    "mergedAt": "2026-08-30T19:46:40Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(payments): add friendly empty state to list payments by address",
+    "url": "https://github.com/Devdave-0x/stellar-trust-escrow/pull/527",
+    "repo": "Devdave-0x/stellar-trust-escrow",
+    "mergedAt": "2026-08-30T22:47:01Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(dashboard): add friendly empty state when live XLM rate has no data",
+    "url": "https://github.com/Devdave-0x/stellar-trust-escrow/pull/528",
+    "repo": "Devdave-0x/stellar-trust-escrow",
+    "mergedAt": "2026-08-30T22:47:07Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(backend): request validation & standardized error handling middleware",
+    "url": "https://github.com/augustina-jpg/scoopdope/pull/933",
+    "repo": "augustina-jpg/scoopdope",
+    "mergedAt": "2026-09-01T11:49:01Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Legacy dashboard: add vault health status indicator (#1298)",
+    "url": "https://github.com/TTL-Legacy/TTL-Legacy/pull/1425",
+    "repo": "TTL-Legacy/TTL-Legacy",
+    "mergedAt": "2026-09-02T14:02:39Z",
+    "kind": "feature"
+  },
+  {
+    "title": "Patrick: consequences-flow UI kit (Badge, TrustBadge, PolicyRejectBanner, FillFeed, KillButton, WithdrawModal, LeaderboardTable)",
+    "url": "https://github.com/Chibey-max/Mirror/pull/2",
+    "repo": "Chibey-max/Mirror",
+    "mergedAt": "2026-09-12T17:32:44Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(fe): real PolicyModule/CopyVault revert decoding + oracle decision",
+    "url": "https://github.com/Chibey-max/Mirror/pull/3",
+    "repo": "Chibey-max/Mirror",
+    "mergedAt": "2026-09-13T21:51:15Z",
+    "kind": "feature"
+  },
+  {
+    "title": "ci(frontend): add build+lint workflow, mirroring contracts.yml",
+    "url": "https://github.com/Chibey-max/Mirror/pull/4",
+    "repo": "Chibey-max/Mirror",
+    "mergedAt": "2026-09-14T11:39:31Z",
+    "kind": "ci"
+  },
+  {
+    "title": "feat(fe): wire WithdrawModal into the agent detail page",
+    "url": "https://github.com/Chibey-max/Mirror/pull/7",
+    "repo": "Chibey-max/Mirror",
+    "mergedAt": "2026-09-16T12:03:08Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(fe): mirror rejections via MirrorRejected, and the CopyVault ABI they need",
+    "url": "https://github.com/Chibey-max/Mirror/pull/9",
+    "repo": "Chibey-max/Mirror",
+    "mergedAt": "2026-09-19T22:03:03Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(fe): make the vault screens do what they claim",
+    "url": "https://github.com/Chibey-max/Mirror/pull/10",
+    "repo": "Chibey-max/Mirror",
+    "mergedAt": "2026-09-20T18:07:46Z",
+    "kind": "feature"
+  },
+  {
+    "title": "design: merge the ledger UI onto the vault behaviour",
+    "url": "https://github.com/Chibey-max/Mirror/pull/11",
+    "repo": "Chibey-max/Mirror",
+    "mergedAt": "2026-09-20T18:07:55Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(fe): vault page, transaction toasts, spent-today, connect-gating",
+    "url": "https://github.com/Chibey-max/Mirror/pull/13",
+    "repo": "Chibey-max/Mirror",
+    "mergedAt": "2026-09-20T19:09:24Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(fe): briefing gaps, brand, landing content, ring starfield",
+    "url": "https://github.com/Chibey-max/Mirror/pull/16",
+    "repo": "Chibey-max/Mirror",
+    "mergedAt": "2026-09-24T19:02:45Z",
+    "kind": "feature"
+  },
+  {
+    "title": "feat(fe): wire the frontend to the real vault, plus faucet, network and a11y gaps",
+    "url": "https://github.com/Chibey-max/Mirror/pull/18",
+    "repo": "Chibey-max/Mirror",
+    "mergedAt": "2026-09-24T19:05:42Z",
+    "kind": "feature"
+  },
+  {
+    "title": "eat(fe): deployment-file addresses, local-chain rehearsal, briefing P7/P8",
+    "url": "https://github.com/Chibey-max/Mirror/pull/22",
+    "repo": "Chibey-max/Mirror",
+    "mergedAt": "2026-09-24T21:57:10Z",
+    "kind": "feature"
+  },
+  {
+    "title": "fix: mirror outcomes survive a reload, runner waits for receipts, PositionOverflow decodes",
+    "url": "https://github.com/Chibey-max/Mirror/pull/24",
+    "repo": "Chibey-max/Mirror",
+    "mergedAt": "2026-09-25T18:55:12Z",
+    "kind": "fix"
+  },
+  {
+    "title": "merge: bring PR #22 onto release-unblock so #21 lands cleanly after it",
+    "url": "https://github.com/Chibey-max/Mirror/pull/23",
+    "repo": "Chibey-max/Mirror",
+    "mergedAt": "2026-09-25T18:55:14Z",
+    "kind": "feature"
+  },
+  {
+    "title": "fix(fe): self-hosted fonts, link previews, page titles, 404 and error pages",
+    "url": "https://github.com/Chibey-max/Mirror/pull/25",
+    "repo": "Chibey-max/Mirror",
+    "mergedAt": "2026-09-25T21:12:27Z",
+    "kind": "fix"
+  }
+]

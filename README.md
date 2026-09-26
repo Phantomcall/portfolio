@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Patrick Uje — portfolio
 
-## Getting Started
+Personal site: selected work, how I work, and a live ledger of every pull request of mine
+that a maintainer has merged.
 
-First, run the development server:
+Built with Next.js (App Router), TypeScript and Tailwind CSS v4. Fully static.
+
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Refresh the pull request data
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`data/prs.json` is generated from GitHub by `scripts/fetch-prs.mjs`. It needs the GitHub
+CLI, signed in (`gh auth status`).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run prs
+```
 
-## Learn More
+The script keeps only merged PRs into repositories you don't own, sorts them oldest first,
+and sorts each into a kind (feature, fix, test, docs, performance & CI) from its
+conventional-commit prefix, falling back to keywords in the title. Every count on the page
+is computed from this file, so re-run it, commit the JSON and redeploy to update the site.
 
-To learn more about Next.js, take a look at the following resources:
+## Where things live
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Path | What it holds |
+| --- | --- |
+| `app/page.tsx` | Page content and layout |
+| `app/_components/merge-ledger.tsx` | The PR ledger: roving keyboard focus, hover/tap readout |
+| `lib/projects.ts` | Selected work copy, stack lists and links |
+| `lib/prs.ts` | PR types, kind order and date formatting |
+| `assets/work/` | Project screenshots (1440×810) |
+| `app/globals.css` | Colour, type tokens and the ledger's load animation |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The five kind colours were checked for colour-blind separation in the row order used in
+`lib/prs.ts`. If you reorder the rows, re-check them.
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Import the repo into Vercel. There are no build settings to change. Link previews use
+Vercel's production URL automatically. Set `SITE_URL` only if you add a custom domain.
