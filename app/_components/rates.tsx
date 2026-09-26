@@ -1,45 +1,14 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
 import { Reveal, Spotlight } from "@/app/_components/motion";
-import { adjustments, formatPrice, hourly, packages, terms, type Currency } from "@/lib/rates";
+import { setCurrency, useCurrency } from "@/app/_components/use-currency";
+import { adjustments, formatPrice, hourly, packages, terms } from "@/lib/rates";
 
-const STORAGE_KEY = "currency";
 const SPOTS = ["#6ea8ff", "#3ddba5", "#b3a8ff", "#ffc845"];
 
-// The visitor's currency choice, remembered in localStorage. Storage can throw
-// (private mode, blocked site data), so an in-memory copy backs it up.
-let memoryCurrency: Currency = "USD";
-const listeners = new Set<() => void>();
-
-function readCurrency(): Currency {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved === "USD" || saved === "NGN") return saved;
-  } catch {}
-  return memoryCurrency;
-}
-
-function writeCurrency(next: Currency) {
-  memoryCurrency = next;
-  try {
-    localStorage.setItem(STORAGE_KEY, next);
-  } catch {}
-  listeners.forEach((notify) => notify());
-}
-
-function subscribe(notify: () => void) {
-  listeners.add(notify);
-  window.addEventListener("storage", notify);
-  return () => {
-    listeners.delete(notify);
-    window.removeEventListener("storage", notify);
-  };
-}
-
 export function Rates() {
-  const currency = useSyncExternalStore(subscribe, readCurrency, () => "USD" as Currency);
-  const choose = writeCurrency;
+  const currency = useCurrency();
+  const choose = setCurrency;
 
   return (
     <div>
