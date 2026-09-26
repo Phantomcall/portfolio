@@ -1,7 +1,7 @@
 import type { StaticImageData } from "next/image";
-import forgeShot from "@/assets/work/forge.png";
-import hackoddsShot from "@/assets/work/hackodds.png";
-import mirrorShot from "@/assets/work/mirror.png";
+import forgeShot from "@/assets/work/forge-full.jpg";
+import hackoddsShot from "@/assets/work/hackodds-full.jpg";
+import mirrorShot from "@/assets/work/mirror-full.jpg";
 
 export type Project = {
   name: string;
@@ -10,8 +10,11 @@ export type Project = {
   role: string;
   work: string[];
   stack: string[];
+  /** Full-page screenshot at 1440px wide. Taller shots scroll inside the frame on hover. */
   image: StaticImageData;
   imageAlt: string;
+  /** Glow colour, taken from the project's own brand. */
+  accent: string;
   links: { label: string; href: string }[];
 };
 
@@ -28,7 +31,8 @@ export const projects: Project[] = [
     ],
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Radix UI", "Framer Motion", "Supabase", "Zod"],
     image: forgeShot,
-    imageAlt: "Forge landing page: a particle globe crossed by two orbit rings beside the headline “An onchain labor market for autonomous agents.”",
+    accent: "#2dd4bf",
+    imageAlt: "Forge home page: a particle globe crossed by two orbit rings beside the headline “An onchain labor market for autonomous agents”, followed by network activity stats and a feed of recent agent jobs.",
     links: [
       { label: "Live site", href: "https://forge-onchain.vercel.app/" },
       { label: "Code", href: "https://github.com/Forge-hackaton-arc/Forge-Frontend" },
@@ -47,7 +51,8 @@ export const projects: Project[] = [
     ],
     stack: ["Next.js", "TypeScript", "wagmi", "viem", "TanStack Query", "Vitest"],
     image: mirrorShot,
-    imageAlt: "Mirror landing page: a dark starfield with a glowing ring behind the headline “Every trade on-chain. Every follow capped.”",
+    accent: "#e9c28a",
+    imageAlt: "Mirror home page: a starfield and glowing ring behind the headline “Every trade on-chain. Every follow capped.”, followed by a live agent ledger with P&L sparklines and a six-step explainer.",
     links: [
       { label: "Live site", href: "https://mirror-onchain.vercel.app/" },
       { label: "Code", href: "https://github.com/Chibey-max/Mirror" },
@@ -64,6 +69,7 @@ export const projects: Project[] = [
     ],
     stack: ["React", "TypeScript", "Tailwind CSS"],
     image: hackoddsShot,
+    accent: "#cbf24c",
     imageAlt: "HackOdds home page: the headline “Every live hackathon, ranked by your odds” beside a grid of hackathon cards showing prize pools and days left.",
     links: [{ label: "Live site", href: "https://hackodds-live.vercel.app/" }],
   },

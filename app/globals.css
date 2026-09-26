@@ -1,31 +1,40 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #eef1f4;
-  --color-panel: #f8f9fb;
-  --color-ink: #14203a;
-  --color-graphite: #56607a;
-  --color-rule: #ccd3dd;
-  /* Gold for text and links: darker than the mark gold so small text passes 4.5:1. */
-  --color-gold: #8a5e0c;
+  --color-night: #0a0e1a;
+  --color-surface: #111728;
+  --color-raised: #182038;
+  --color-rule: #26304a;
+  --color-snow: #e8ecf5;
+  --color-mist: #9aa6bf;
+
+  /* Bright tints for glows, gradients and highlighted words. Decorative only:
+     data marks use the validated --color-k-* steps below. */
+  --color-glow-blue: #6ea8ff;
+  --color-glow-coral: #ff8a5b;
+  --color-glow-aqua: #3ddba5;
+  --color-glow-violet: #b3a8ff;
+  --color-glow-gold: #ffc845;
 
   --font-display: var(--font-familjen), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-source-serif), Georgia, serif;
   --font-mono: var(--font-martian), ui-monospace, monospace;
+
+  --animate-pulse-dot: pulse-dot 2s ease-out infinite;
 }
 
 @layer base {
   :root {
-    color-scheme: light;
+    color-scheme: dark;
 
     /* PR kinds. Plain custom properties, not @theme: they're only read through inline
        styles, and Tailwind drops @theme variables that no utility class uses.
-       Validated with the dataviz palette checker on #F8F9FB, in this order. */
-    --color-k-feature: #2f5da8;
-    --color-k-fix: #c0532e;
-    --color-k-test: #0e8a62;
-    --color-k-docs: #7a5bb5;
-    --color-k-ci: #b07d1a;
+       Validated with the dataviz palette checker on #111728 (dark band), in this order. */
+    --color-k-feature: #3987e5;
+    --color-k-fix: #d95926;
+    --color-k-test: #199e70;
+    --color-k-docs: #9085e9;
+    --color-k-ci: #c98500;
   }
 
   html {
@@ -33,44 +42,211 @@
   }
 
   body {
-    background: var(--color-paper);
-    color: var(--color-ink);
+    background: var(--color-night);
+    color: var(--color-snow);
   }
 
   ::selection {
-    background: #b07d1a33;
+    background: #6ea8ff55;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-ink);
+    outline: 2px solid var(--color-glow-gold);
     outline-offset: 3px;
-    border-radius: 2px;
+    border-radius: 3px;
   }
 }
 
-/* The merge ledger: one mark per merged pull request. */
+/* ---------- Scroll reveal ----------
+   Content is only hidden once JS has marked <html class="js">, so the page still
+   reads with scripts off. */
+.js [data-reveal] {
+  opacity: 0;
+  translate: 0 28px;
+  transition:
+    opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    translate 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--delay, 0ms);
+}
+.js [data-reveal][data-in="true"] {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* ---------- Hero headline: words rise in on load ---------- */
+@keyframes word-in {
+  from {
+    opacity: 0;
+    translate: 0 0.45em;
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    filter: blur(0);
+  }
+}
+.word {
+  display: inline-block;
+  animation: word-in 800ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(var(--w) * 70ms + 120ms);
+}
+
+/* Animated gradient text for the words that carry the promise. */
+@keyframes sheen {
+  to {
+    background-position: 200% 50%;
+  }
+}
+.sheen {
+  background: linear-gradient(90deg, var(--from), var(--to), var(--from)) 0 50% / 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation:
+    word-in 800ms cubic-bezier(0.2, 0.7, 0.2, 1) both,
+    sheen 5s linear infinite;
+  animation-delay: calc(var(--w) * 70ms + 120ms), 0s;
+}
+
+/* ---------- Merge ledger ---------- */
 @keyframes mark-in {
   from {
     opacity: 0;
-    transform: scale(0.3);
+    transform: scale(0.2);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.35);
   }
   to {
     opacity: 1;
     transform: none;
   }
 }
-
 .mark {
-  animation: mark-in 380ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: mark-in 520ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
   /* --i is the PR's position in merge order, so history replays oldest first. */
-  animation-delay: calc(var(--i) * 5ms + 150ms);
+  animation-delay: calc(var(--i) * 7ms + 200ms);
+}
+
+@keyframes pulse-dot {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 55%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 10px transparent;
+  }
+}
+
+/* ---------- Spotlight cards: a glow that follows the pointer ---------- */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    var(--spot, #6ea8ff),
+    transparent 45%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 300ms;
+}
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    500px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--spot, #6ea8ff) 12%, transparent),
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 300ms;
+}
+.spotlight:hover::before,
+.spotlight:hover::after,
+.spotlight:focus-within::before,
+.spotlight:focus-within::after {
+  opacity: 1;
+}
+
+/* ---------- Rotating gradient border for the primary call to action ---------- */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes spin-angle {
+  to {
+    --angle: 360deg;
+  }
+}
+.cta-ring {
+  --angle: 0deg;
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(var(--color-night), var(--color-night)) padding-box,
+    conic-gradient(
+        from var(--angle),
+        var(--color-glow-blue),
+        var(--color-glow-violet),
+        var(--color-glow-coral),
+        var(--color-glow-gold),
+        var(--color-glow-aqua),
+        var(--color-glow-blue)
+      )
+      border-box;
+  animation: spin-angle 6s linear infinite;
+}
+
+/* ---------- Project frames: the screenshot scrolls through the real page ---------- */
+.frame {
+  container-type: size;
+}
+.frame-shot {
+  transition: translate 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.frame:hover .frame-shot,
+.frame-wrap:focus-within .frame-shot {
+  translate: 0 calc(-100% + 100cqh);
+  transition-duration: var(--pan, 6s);
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .mark {
+  .js [data-reveal] {
+    opacity: 1;
+    translate: none;
+    transition: none;
+  }
+  .word,
+  .sheen,
+  .mark,
+  .cta-ring {
     animation: none;
+  }
+  .sheen {
+    background-position: 50% 50%;
+  }
+  .frame:hover .frame-shot,
+  .frame-wrap:focus-within .frame-shot {
+    translate: none;
   }
 }

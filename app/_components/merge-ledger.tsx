@@ -20,6 +20,7 @@ const kindColor = (kind: Kind) => `var(--color-k-${kind})`;
 
 export function MergeLedger({ rows, latest }: { rows: LedgerRow[]; latest: Pos }) {
   const [active, setActive] = useState<Pos>(latest);
+  const [run, setRun] = useState(0);
   const marks = useRef(new Map<string, HTMLAnchorElement>());
   const lastPointer = useRef<string>("mouse");
 
@@ -77,30 +78,51 @@ export function MergeLedger({ rows, latest }: { rows: LedgerRow[]; latest: Pos }
     }
   }
 
+  function replay() {
+    setActive(latest);
+    setRun((n) => n + 1);
+  }
+
   return (
-    <figure className="rounded-lg border border-rule bg-panel">
-      <figcaption className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-rule px-4 py-3 font-mono text-[0.68rem] tracking-wide text-graphite uppercase [font-stretch:88%] sm:px-5">
-        <span>{total} merged pull requests</span>
-        <span>Oldest first · each mark opens its PR</span>
+    <figure className="overflow-hidden rounded-2xl border border-rule bg-surface/80 shadow-[0_30px_80px_-40px_#3987e566] backdrop-blur">
+      <figcaption className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-rule px-4 py-3 font-mono text-[0.68rem] tracking-wide text-mist uppercase [font-stretch:88%] sm:px-6">
+        <span>
+          <span className="text-snow">{total}</span> merged pull requests · oldest first
+        </span>
+        <button
+          type="button"
+          onClick={replay}
+          className="group inline-flex items-center gap-1.5 rounded-full border border-rule px-3 py-1 uppercase transition-colors hover:border-glow-blue hover:text-snow"
+        >
+          <span aria-hidden className="inline-block transition-transform duration-500 group-hover:-rotate-180">
+            ↺
+          </span>
+          Replay history
+        </button>
       </figcaption>
 
       <div
+        key={run}
         role="group"
         aria-label={`${total} merged pull requests, grouped by kind. Use arrow keys to move between them.`}
         onKeyDown={onKeyDown}
-        className="px-4 sm:px-5"
+        className="px-4 sm:px-6"
       >
         {rows.map((row, r) => (
           <div
             key={row.kind}
-            className="grid grid-cols-[1fr_auto] gap-x-3 gap-y-2 border-t border-rule py-3 first:border-t-0 sm:grid-cols-[9.5rem_2.25rem_1fr] sm:items-start"
+            className="grid grid-cols-[1fr_auto] gap-x-3 gap-y-2 border-t border-rule/70 py-3.5 first:border-t-0 sm:grid-cols-[10rem_2.5rem_1fr] sm:items-start"
           >
             <span className="flex items-center gap-2 font-display text-[0.95rem] font-semibold leading-none sm:pt-px">
-              <span aria-hidden className="size-2.5 shrink-0 rounded-[2px]" style={{ background: kindColor(row.kind) }} />
+              <span
+                aria-hidden
+                className="size-2.5 shrink-0 rounded-[3px]"
+                style={{ background: kindColor(row.kind), boxShadow: `0 0 10px ${kindColor(row.kind)}` }}
+              />
               {row.label}
             </span>
-            <span className="text-right font-mono text-xs text-graphite tabular-nums sm:pt-px">{row.prs.length}</span>
-            <ul className="col-span-2 flex flex-wrap gap-[3px] sm:col-span-1">
+            <span className="text-right font-mono text-xs text-mist tabular-nums sm:pt-px">{row.prs.length}</span>
+            <ul className="col-span-2 flex flex-wrap gap-[4px] sm:col-span-1">
               {row.prs.map((pr, c) => {
                 const isActive = r === active.row && c === active.col;
                 return (
@@ -117,10 +139,16 @@ export function MergeLedger({ rows, latest }: { rows: LedgerRow[]; latest: Pos }
                       onMouseEnter={() => setActive({ row: r, col: c })}
                       onFocus={() => setActive({ row: r, col: c })}
                       onClick={(e) => onMarkClick(e, { row: r, col: c })}
-                      className={`mark block size-[13px] rounded-[2px] transition-transform duration-150 hover:scale-125 focus-visible:outline-offset-2 sm:size-[11px] ${
-                        isActive ? "scale-125 outline-2 outline-offset-1 outline-ink" : ""
+                      className={`mark block size-[14px] rounded-[3px] transition-[scale,box-shadow] duration-200 hover:scale-150 sm:size-3 ${
+                        isActive ? "scale-150 outline-2 outline-offset-2 outline-snow" : ""
                       }`}
-                      style={{ background: kindColor(row.kind), "--i": pr.i } as CSSProperties}
+                      style={
+                        {
+                          background: kindColor(row.kind),
+                          boxShadow: isActive ? `0 0 16px 2px ${kindColor(row.kind)}` : undefined,
+                          "--i": pr.i,
+                        } as CSSProperties
+                      }
                     />
                   </li>
                 );
@@ -130,15 +158,22 @@ export function MergeLedger({ rows, latest }: { rows: LedgerRow[]; latest: Pos }
         ))}
       </div>
 
-      <div className="grid min-h-[8.5rem] content-start gap-1.5 border-t border-rule px-4 py-4 sm:min-h-[7.5rem] sm:px-5">
-        <p className="flex items-center gap-2 font-mono text-[0.68rem] tracking-wide text-graphite uppercase [font-stretch:88%]">
-          <span aria-hidden className="size-2 rounded-[2px]" style={{ background: kindColor(activeRow.kind) }} />
+      <div className="grid min-h-[9rem] content-start gap-2 border-t border-rule bg-night/50 px-4 py-4 sm:min-h-[8rem] sm:px-6">
+        <p className="flex items-center gap-2 font-mono text-[0.68rem] tracking-wide text-mist uppercase [font-stretch:88%]">
+          <span
+            aria-hidden
+            className="size-2 rounded-full"
+            style={{ background: kindColor(activeRow.kind), boxShadow: `0 0 8px ${kindColor(activeRow.kind)}` }}
+          />
           {isLatest ? "Latest merge" : activeRow.label} · {activePr.date}
         </p>
-        <p className="line-clamp-2 font-display text-lg leading-snug font-semibold text-balance">{activePr.title}</p>
-        <p className="flex flex-wrap items-baseline gap-x-4 gap-y-1 font-mono text-xs text-graphite">
+        <p className="line-clamp-2 font-display text-lg leading-snug font-semibold text-balance sm:text-xl">{activePr.title}</p>
+        <p className="flex flex-wrap items-baseline gap-x-4 gap-y-1 font-mono text-xs text-mist">
           <span>{activePr.repo}</span>
-          <a href={activePr.url} className="text-gold underline decoration-gold/40 underline-offset-4 hover:decoration-gold">
+          <a
+            href={activePr.url}
+            className="text-glow-gold underline decoration-glow-gold/40 underline-offset-4 hover:decoration-glow-gold"
+          >
             Open on GitHub ↗
           </a>
         </p>
