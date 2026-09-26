@@ -35,9 +35,12 @@ is computed from this file, so re-run it, commit the JSON and redeploy to update
 | `app/_components/merge-ledger.tsx` | The PR ledger: roving keyboard focus, hover/tap readout, replay |
 | `app/_components/project-frame.tsx` | Browser frame that tilts and scrolls a full-page screenshot on hover |
 | `app/_components/rates.tsx` | Rates, packages and the USD/NGN toggle |
+| `app/_components/redesign.tsx` | Before/after comparison slider and the redesign price |
+| `app/_components/use-currency.ts` | Shared USD/NGN choice, so every price on the page switches together |
 | `app/_components/availability.tsx` | Live "available now" status and the weekly hours strip |
 | `app/_components/motion.tsx` | Scroll reveal, count-up, spotlight cards, copy email, sticky header |
 | `lib/rates.ts` | Hourly rate, package prices, deadline adjustments and terms |
+| `lib/redesign.ts` | Redesign price, process steps and the before/after example |
 | `lib/availability.ts` | Working hours (UTC+1) and status logic |
 | `lib/projects.ts` | Selected work copy, stack lists, links and accent colours |
 | `lib/prs.ts` | PR types, kind order and date formatting |

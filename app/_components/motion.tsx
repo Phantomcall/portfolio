@@ -35,14 +35,17 @@ export function Reveal({
   children,
   delay = 0,
   className,
+  as: Tag = "div",
 }: {
   children: ReactNode;
   delay?: number;
   className?: string;
+  /** Render as a list item when the reveal wraps an item of an <ol>/<ul>. */
+  as?: "div" | "li";
 }) {
-  const [ref, inView] = useInView<HTMLDivElement>();
+  const [ref, inView] = useInView<HTMLDivElement & HTMLLIElement>();
   return (
-    <div
+    <Tag
       ref={ref}
       data-reveal
       data-in={inView}
@@ -50,7 +53,7 @@ export function Reveal({
       style={{ "--delay": `${delay}ms` } as CSSProperties}
     >
       {children}
-    </div>
+    </Tag>
   );
 }
 
@@ -136,6 +139,7 @@ export function CopyEmail({ email }: { email: string }) {
 const NAV = [
   { id: "proof", label: "Proof" },
   { id: "work", label: "Work" },
+  { id: "redesign", label: "Redesign" },
   { id: "rates", label: "Rates" },
   { id: "contact", label: "Contact" },
 ];

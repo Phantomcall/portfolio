@@ -5,7 +5,9 @@ import { MergeLedger, type LedgerRow } from "@/app/_components/merge-ledger";
 import { CopyEmail, CountUp, Reveal, SiteHeader, Spotlight } from "@/app/_components/motion";
 import { ProjectFrame } from "@/app/_components/project-frame";
 import { Rates } from "@/app/_components/rates";
+import { BeforeAfter, RedesignPrice } from "@/app/_components/redesign";
 import { projects } from "@/lib/projects";
+import { example, gains, keeps, steps } from "@/lib/redesign";
 import { KINDS, findPr, formatDate, formatMonth, pullRequests, repoCount } from "@/lib/prs";
 
 const NAME = "Patrick Uje";
@@ -336,6 +338,70 @@ export default function Home() {
                   <dd className="border-b border-rule pt-2 pb-5 sm:py-5">B.Sc. Computer Science, final year</dd>
                 </div>
               </dl>
+            </Reveal>
+          </section>
+
+          {/* ---------------- Redesigns ---------------- */}
+          <section id="redesign" aria-labelledby="redesign-title" className="scroll-mt-20 border-t border-rule py-24 sm:py-32">
+            <div className="grid gap-10 lg:grid-cols-[1fr_22rem] lg:items-end">
+              <Reveal>
+                <p className={eyebrow}>Redesigns</p>
+                <h2 id="redesign-title" className={`${sectionTitle} mt-4 max-w-[17ch]`}>
+                  Already have a site? I’ll make it faster and easier to use.
+                </h2>
+                <p className="mt-6 max-w-[38rem] text-lg leading-relaxed text-mist">
+                  Keep what works, fix what doesn’t, and measure the difference. Here’s one I did on this site.
+                </p>
+              </Reveal>
+              <Reveal delay={120}>
+                <RedesignPrice />
+              </Reveal>
+            </div>
+
+            <Reveal delay={150} className="mt-12">
+              <BeforeAfter {...example} />
+            </Reveal>
+
+            <ol className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {steps.map((step, i) => (
+                <Reveal as="li" key={step.title} delay={i * 90} className="relative h-full rounded-2xl border border-rule bg-surface p-6">
+                    <span
+                      aria-hidden
+                      className="grid size-9 place-items-center rounded-full bg-gradient-to-br from-glow-violet to-glow-blue font-display font-semibold text-night"
+                    >
+                      {i + 1}
+                    </span>
+                    <h3 className="mt-5 font-display text-xl font-semibold">
+                      <span className="sr-only">Step {i + 1}: </span>
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-[0.95rem] leading-relaxed text-mist">{step.body}</p>
+                    {i < steps.length - 1 && (
+                      <span aria-hidden className="absolute top-10 -right-5 hidden h-px w-5 bg-gradient-to-r from-glow-violet to-transparent lg:block" />
+                    )}
+                </Reveal>
+              ))}
+            </ol>
+
+            <Reveal className="mt-12 grid gap-5 md:grid-cols-2">
+              {[
+                { title: "What you keep", items: keeps, color: "#3ddba5" },
+                { title: "What you gain", items: gains, color: "#b3a8ff" },
+              ].map((list) => (
+                <div key={list.title} className="rounded-2xl border border-rule bg-surface/60 p-6">
+                  <h3 className="font-display text-lg font-semibold">{list.title}</h3>
+                  <ul className="mt-4 space-y-2.5">
+                    {list.items.map((item) => (
+                      <li key={item} className="flex gap-3 leading-snug">
+                        <span aria-hidden className="mt-[0.2em] font-mono text-sm" style={{ color: list.color }}>
+                          ✓
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </Reveal>
           </section>
 
