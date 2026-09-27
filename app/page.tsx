@@ -2,9 +2,11 @@ import type { CSSProperties } from "react";
 import { Availability } from "@/app/_components/availability";
 import { HeroGraph, type GraphPr } from "@/app/_components/hero-graph";
 import { MergeLedger, type LedgerRow } from "@/app/_components/merge-ledger";
+import { CommitSpine, CursorGlow, HeroTicker, Magnetic, SplitHeading, type TickerItem } from "@/app/_components/flair";
 import { CopyEmail, CountUp, Reveal, SiteHeader, Spotlight } from "@/app/_components/motion";
 import { ProjectFrame } from "@/app/_components/project-frame";
 import { Rates } from "@/app/_components/rates";
+import { RepoMarquee } from "@/app/_components/repo-marquee";
 import { BeforeAfter, RedesignPrice } from "@/app/_components/redesign";
 import { projects } from "@/lib/projects";
 import { example, gains, keeps, steps } from "@/lib/redesign";
@@ -34,6 +36,12 @@ const graphPrs: GraphPr[] = pullRequests.slice(-60).map((p) => {
   const repo = p.repo.split("/")[1];
   return { kind: p.kind, label: `${repo.length > 22 ? `${repo.slice(0, 21)}…` : repo} #${p.url.split("/").pop()}` };
 });
+
+// The hero ticker types out the eight most recent merges, newest first.
+const ticker: TickerItem[] = pullRequests
+  .slice(-8)
+  .reverse()
+  .map((p) => ({ ref: `${p.repo.split("/")[1]}#${p.url.split("/").pop()}`, title: p.title, kind: p.kind }));
 
 // Headline words. The three promises get their own animated gradient.
 const HEADLINE: { text: string; from?: string; to?: string }[] = [
@@ -104,6 +112,8 @@ export default function Home() {
       </a>
 
       <SiteHeader name={NAME} />
+      <CursorGlow />
+      <CommitSpine />
 
       <main id="main">
         {/* ---------------- Hero ---------------- */}
@@ -113,7 +123,7 @@ export default function Home() {
           <div aria-hidden className="absolute bottom-0 left-1/3 -z-10 h-[20rem] w-[40rem] rounded-full bg-[radial-gradient(closest-side,#199e7026,transparent)]" />
           <HeroGraph prs={graphPrs} />
 
-          <div className="relative mx-auto flex min-h-[min(52rem,calc(100dvh-4.25rem))] max-w-6xl flex-col justify-center px-5 py-20 sm:px-8">
+          <div className="relative mx-auto flex min-h-[min(52rem,calc(100dvh-4.25rem))] max-w-6xl flex-col justify-center px-5 py-12 sm:px-8 lg:py-10">
             <p className={`${eyebrow} flex items-center gap-2.5`}>
               <span aria-hidden className="size-2 animate-pulse-dot rounded-full bg-glow-aqua text-glow-aqua motion-reduce:animate-none" />
               Frontend engineer · open to freelance and full-time roles
@@ -133,15 +143,18 @@ export default function Home() {
                 </span>
               ))}
             </h1>
-            <Reveal delay={500}>
-              <p className="mt-8 max-w-[36rem] text-lg leading-relaxed text-pretty text-mist sm:text-xl">
+            {/* Above the fold, so these rise in on load rather than waiting for a scroll. */}
+            <div className="rise" style={{ "--delay": "500ms" } as CSSProperties}>
+              <p className="mt-7 max-w-[36rem] text-lg leading-relaxed text-pretty text-mist sm:text-xl">
                 I’m {NAME}. The branching lines on this page are my real pull requests, merging back in the order
-                maintainers accepted them. Move your cursor through them.
+                maintainers accepted them.<span className="max-lg:hidden"> Move your cursor through them.</span>
               </p>
-              <div className="mt-9 flex flex-wrap items-center gap-4 font-display font-semibold">
-                <a href={`mailto:${EMAIL}`} className="cta-ring rounded-full px-7 py-3.5 text-snow transition-transform hover:-translate-y-0.5">
-                  Email me
-                </a>
+              <div className="mt-8 flex flex-wrap items-center gap-4 font-display font-semibold">
+                <Magnetic>
+                  <a href={`mailto:${EMAIL}`} className="cta-ring inline-block rounded-full px-7 py-3.5 text-snow">
+                    Email me
+                  </a>
+                </Magnetic>
                 <a
                   href="#work"
                   className="rounded-full border border-rule bg-surface/60 px-7 py-3.5 text-snow backdrop-blur transition-colors hover:border-mist"
@@ -152,10 +165,14 @@ export default function Home() {
                   GitHub ↗
                 </a>
               </div>
-            </Reveal>
+            </div>
 
-            <Reveal delay={700}>
-              <dl className="mt-16 grid max-w-2xl grid-cols-3 gap-6 border-t border-rule/70 pt-6">
+            <div className="rise mt-8" style={{ "--delay": "650ms" } as CSSProperties}>
+              <HeroTicker items={ticker} />
+            </div>
+
+            <div className="rise" style={{ "--delay": "800ms" } as CSSProperties}>
+              <dl className="mt-8 grid max-w-2xl grid-cols-3 gap-6 border-t border-rule/70 pt-6">
                 {[
                   { value: pullRequests.length, label: "Merged pull requests", color: "text-glow-blue" },
                   { value: repoCount, label: "Open-source repos", color: "text-glow-aqua" },
@@ -169,18 +186,18 @@ export default function Home() {
                   </div>
                 ))}
               </dl>
-            </Reveal>
+            </div>
           </div>
         </section>
+
+        <RepoMarquee />
 
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           {/* ---------------- Proof ---------------- */}
           <section id="proof" aria-labelledby="proof-title" className="scroll-mt-20 py-24 sm:py-32">
             <Reveal>
               <p className={eyebrow}>The proof</p>
-              <h2 id="proof-title" className={`${sectionTitle} mt-4 max-w-[18ch]`}>
-                Every claim here links to merged code.
-              </h2>
+              <SplitHeading id="proof-title" text="Every claim here links to merged code." className={`${sectionTitle} mt-4 max-w-[18ch]`} />
               <p className="mt-6 max-w-[38rem] text-lg leading-relaxed text-mist">
                 Since {since}, maintainers of {repoCount} open-source projects have reviewed and merged{" "}
                 {pullRequests.length} of my pull requests. Each square is one of them. Hover, tap or use the arrow keys.
@@ -222,9 +239,7 @@ export default function Home() {
           <section id="work" aria-labelledby="work-title" className="scroll-mt-20 border-t border-rule py-24 sm:py-32">
             <Reveal>
               <p className={eyebrow}>Selected work</p>
-              <h2 id="work-title" className={`${sectionTitle} mt-4 max-w-[16ch]`}>
-                Three products, live right now.
-              </h2>
+              <SplitHeading id="work-title" text="Three products, live right now." className={`${sectionTitle} mt-4 max-w-[16ch]`} />
               <p className="mt-6 max-w-[36rem] text-lg leading-relaxed text-mist">
                 Hover a screenshot to scroll through the real page.
               </p>
@@ -287,9 +302,7 @@ export default function Home() {
           <section id="practice" aria-labelledby="practice-title" className="scroll-mt-20 border-t border-rule py-24 sm:py-32">
             <Reveal>
               <p className={eyebrow}>How I work</p>
-              <h2 id="practice-title" className={`${sectionTitle} mt-4 max-w-[18ch]`}>
-                Four habits, each with a pull request that shows it.
-              </h2>
+              <SplitHeading id="practice-title" text="Four habits, each with a pull request that shows it." className={`${sectionTitle} mt-4 max-w-[18ch]`} />
             </Reveal>
             <div className="mt-14 grid gap-5 md:grid-cols-2">
               {practices.map(({ title, body, evidence, pr, color }, i) => (
@@ -346,9 +359,11 @@ export default function Home() {
             <div className="grid gap-10 lg:grid-cols-[1fr_22rem] lg:items-end">
               <Reveal>
                 <p className={eyebrow}>Redesigns</p>
-                <h2 id="redesign-title" className={`${sectionTitle} mt-4 max-w-[17ch]`}>
-                  Already have a site? I’ll make it faster and easier to use.
-                </h2>
+                <SplitHeading
+                  id="redesign-title"
+                  text="Already have a site? I’ll make it faster and easier to use."
+                  className={`${sectionTitle} mt-4 max-w-[17ch]`}
+                />
                 <p className="mt-6 max-w-[38rem] text-lg leading-relaxed text-mist">
                   Keep what works, fix what doesn’t, and measure the difference. Here’s one I did on this site.
                 </p>
@@ -409,9 +424,7 @@ export default function Home() {
           <section id="rates" aria-labelledby="rates-title" className="scroll-mt-20 border-t border-rule py-24 sm:py-32">
             <Reveal>
               <p className={eyebrow}>Rates &amp; availability</p>
-              <h2 id="rates-title" className={`${sectionTitle} mt-4 max-w-[18ch]`}>
-                Clear prices, and when you can reach me.
-              </h2>
+              <SplitHeading id="rates-title" text="Clear prices, and when you can reach me." className={`${sectionTitle} mt-4 max-w-[18ch]`} />
               <p className="mt-6 max-w-[38rem] text-lg leading-relaxed text-mist">
                 Packages show starting prices. Your scope, custom features and deadline set the final quote, which you
                 get in writing before any work starts.
@@ -443,12 +456,11 @@ export default function Home() {
                 you how I’d approach it.
               </p>
               <div className="mt-10 flex flex-wrap items-center gap-4 font-display font-semibold">
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="cta-ring rounded-full px-7 py-4 text-snow transition-transform hover:-translate-y-0.5 sm:text-lg"
-                >
-                  {EMAIL}
-                </a>
+                <Magnetic strength={0.18}>
+                  <a href={`mailto:${EMAIL}`} className="cta-ring inline-block rounded-full px-7 py-4 text-snow sm:text-lg">
+                    {EMAIL}
+                  </a>
+                </Magnetic>
                 <CopyEmail email={EMAIL} />
                 <a href={GITHUB} className={`${textLink} px-2`}>
                   GitHub ↗
@@ -459,10 +471,22 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="flex flex-wrap justify-between gap-x-6 gap-y-2 border-t border-rule py-8 font-mono text-[0.7rem] text-mist">
+      <footer className="signoff mx-auto max-w-6xl overflow-hidden px-5 sm:px-8">
+        <div className="border-t border-rule pt-14">
+          <p
+            aria-hidden
+            className="signoff-text pb-[0.14em] font-display text-[clamp(3.6rem,15.5vw,13.5rem)] leading-[0.9] font-semibold tracking-[-0.055em] whitespace-nowrap select-none"
+          >
+            Patrick Uje
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-8 font-mono text-[0.7rem] text-mist">
           <span>© {new Date().getFullYear()} Amune Patrick Uje</span>
           <span>Pull request data from GitHub, last merge {formatDate(pullRequests[latestIndex].mergedAt)}</span>
+          <a href="#top" className="group inline-flex items-center gap-2 text-snow hover:text-glow-aqua">
+            Back to top
+            <span aria-hidden className="inline-block transition-transform group-hover:-translate-y-1">↑</span>
+          </a>
         </div>
       </footer>
     </>
