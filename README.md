@@ -39,6 +39,9 @@ is computed from this file, so re-run it, commit the JSON and redeploy to update
 | `app/_components/use-currency.ts` | Shared USD/NGN choice, so every price on the page switches together |
 | `app/_components/availability.tsx` | Live "available now" status and the weekly hours strip |
 | `app/_components/motion.tsx` | Scroll reveal, count-up, spotlight cards, copy email, sticky header |
+| `app/_components/flair.tsx` | Commit spine, merge ticker, word-rise headings, magnetic buttons, cursor glow |
+| `app/_components/repo-marquee.tsx` | Scrolling rows of every repo with a merged PR |
+| `app/not-found.tsx` | The 404 page |
 | `lib/rates.ts` | Hourly rate, package prices, deadline adjustments and terms |
 | `lib/redesign.ts` | Redesign price, process steps and the before/after example |
 | `lib/availability.ts` | Working hours (UTC+1) and status logic |

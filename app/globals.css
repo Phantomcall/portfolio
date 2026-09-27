@@ -92,6 +92,18 @@
   animation-delay: calc(var(--w) * 70ms + 120ms);
 }
 
+/* Hero content below the headline: rises in on page load. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 24px;
+  }
+}
+.rise {
+  animation: rise 800ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
 /* Animated gradient text for the words that carry the promise. */
 @keyframes sheen {
   to {
@@ -227,6 +239,77 @@
   transition-duration: var(--pan, 6s);
 }
 
+/* ---------- Section headings: words rise in when scrolled into view ---------- */
+.js .split .split-w {
+  display: inline-block;
+  opacity: 0;
+  translate: 0 0.5em;
+  filter: blur(6px);
+}
+.js .split[data-in="true"] .split-w {
+  animation: word-in 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(var(--w) * 55ms + 80ms);
+}
+
+/* ---------- 404: the orphaned branch keeps flowing ---------- */
+@keyframes dash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+/* ---------- Terminal ticker caret ---------- */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ---------- Repo marquee ---------- */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee var(--dur, 90s) linear infinite;
+}
+.marquee-track[data-reverse] {
+  animation-direction: reverse;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ---------- Footer sign-off: the outlined name fills with colour ----------
+   Hover fills it anywhere; where the browser supports scroll-driven animations it
+   fills as the footer scrolls into view instead. */
+.signoff-text {
+  -webkit-text-stroke: 1px #e8ecf540;
+  color: transparent;
+  background: linear-gradient(90deg, #6ea8ff, #b3a8ff, #ff8a5b, #ffc845, #3ddba5) 0 0 / 0% 100% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: background-size 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.signoff:hover .signoff-text {
+  background-size: 100% 100%;
+}
+@keyframes fill-in {
+  to {
+    background-size: 100% 100%;
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .signoff-text {
+      animation: fill-in linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 60%;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -237,9 +320,17 @@
     transition: none;
   }
   .word,
+  .rise,
   .sheen,
   .mark,
-  .cta-ring {
+  .cta-ring,
+  .marquee-track {
+    animation: none;
+  }
+  .js .split .split-w {
+    opacity: 1;
+    translate: none;
+    filter: none;
     animation: none;
   }
   .sheen {

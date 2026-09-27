@@ -283,7 +283,7 @@ export function HeroGraph({ prs }: { prs: GraphPr[] }) {
     <canvas
       ref={canvasRef}
       aria-hidden
-      className="pointer-events-none absolute inset-0 h-full w-full [mask-image:linear-gradient(to_right,transparent_0%,transparent_44%,#000_62%,#000_94%,transparent_100%)] max-lg:opacity-35 max-lg:[mask-image:linear-gradient(to_bottom,transparent_0%,transparent_40%,#000_75%)]"
+      className="pointer-events-none absolute inset-0 h-full w-full [mask-image:linear-gradient(to_right,transparent_0%,transparent_51%,#000_66%,#000_94%,transparent_100%)] max-lg:opacity-35 max-lg:[mask-image:linear-gradient(to_bottom,transparent_0%,transparent_40%,#000_75%)]"
     />
   );
 }

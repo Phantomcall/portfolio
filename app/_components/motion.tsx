@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from "react";
 
-function useInView<T extends Element>(rootMargin = "0px 0px -12% 0px") {
+export function useInView<T extends Element>(rootMargin = "0px 0px -12% 0px") {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
   useEffect(() => {
