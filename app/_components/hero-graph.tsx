@@ -65,7 +65,6 @@ export function HeroGraph({ prs }: { prs: GraphPr[] }) {
     let nextX = w * 0.15; // world x where the next branch forks
     let prIndex = 0;
     const branches: Branch[] = [];
-    const pointer = { x: -9999, y: -9999, active: false };
 
     function spawnUntil(limit: number) {
       while (nextX - offset < limit) {
@@ -95,21 +94,6 @@ export function HeroGraph({ prs }: { prs: GraphPr[] }) {
       return trunkY + (laneY - trunkY) * t;
     }
 
-    // Lines lean gently toward the pointer.
-    function warp(x: number, y: number) {
-      if (!pointer.active) return y;
-      const dx = x - pointer.x;
-      const dy = y - pointer.y;
-      const falloff = Math.exp(-(dx * dx + dy * dy) / (2 * 150 * 150));
-      return y + (pointer.y - y) * 0.22 * falloff;
-    }
-
-    function nearPointer(x: number, y: number) {
-      if (!pointer.active) return 0;
-      const d = Math.hypot(x - pointer.x, y - pointer.y);
-      return Math.max(0, 1 - d / 110);
-    }
-
     // ---- Drawing -----------------------------------------------------------
     function strokePath(points: [number, number][], color: string, width: number, alpha: number) {
       ctx!.globalAlpha = alpha;
@@ -135,17 +119,14 @@ export function HeroGraph({ prs }: { prs: GraphPr[] }) {
 
       // Trunk: the main branch everything merges back into.
       const trunk: [number, number][] = [];
-      for (let x = -10; x <= w + 10; x += 8) trunk.push([x, warp(x, trunkY)]);
+      for (let x = -10; x <= w + 10; x += 8) trunk.push([x, trunkY]);
       strokePath(trunk, "#e8ecf5", 7, 0.05);
       strokePath(trunk, "#e8ecf5", 1.6, 0.4);
 
       // Trunk commits, anchored to the world so they scroll with it.
       const step = 46;
       for (let wx = Math.floor(offset / step) * step; wx - offset < w + step; wx += step) {
-        const x = wx - offset;
-        const y = warp(x, trunkY);
-        const n = nearPointer(x, y);
-        dot(x, y, 2.2 + n * 2.5, "#e8ecf5", 0.35 + n * 0.5);
+        dot(wx - offset, trunkY, 2.2, "#e8ecf5", 0.35);
       }
 
       // "Now" line: branches merge as they cross it.
@@ -167,8 +148,8 @@ export function HeroGraph({ prs }: { prs: GraphPr[] }) {
         const color = TINT[b.pr.kind];
         const pending = b.mergedAt === null;
         const points: [number, number][] = [];
-        for (let x = fork; x <= merge; x += 6) points.push([x, warp(x, branchY(b, x))]);
-        points.push([merge, warp(merge, trunkY)]);
+        for (let x = fork; x <= merge; x += 6) points.push([x, branchY(b, x)]);
+        points.push([merge, trunkY]);
 
         // Open branches (right of "now") are drawn fainter and dashed.
         if (pending) ctx!.setLineDash([2, 5]);
@@ -178,14 +159,11 @@ export function HeroGraph({ prs }: { prs: GraphPr[] }) {
 
         // Commits along the branch.
         for (let x = fork + RAMP + 10; x < merge - RAMP; x += 34) {
-          const y = warp(x, branchY(b, x));
-          const n = nearPointer(x, y);
-          dot(x, y, 2.6 + n * 3, color, (pending ? 0.5 : 0.95) * (0.8 + n * 0.2));
-          if (n > 0.2) dot(x, y, 9 * n, color, 0.12 * n);
+          dot(x, branchY(b, x), 2.6, color, pending ? 0.4 : 0.8);
         }
 
         // Merge node.
-        const my = warp(merge, trunkY);
+        const my = trunkY;
         dot(merge, my, 3.6, color, pending ? 0.4 : 1);
 
         // Merge pulse and label, just after the branch crosses "now".
@@ -248,22 +226,12 @@ export function HeroGraph({ prs }: { prs: GraphPr[] }) {
     io.observe(canvas);
 
     const onVisibility = () => (document.hidden ? stop() : start());
-    const onPointer = (e: PointerEvent) => {
-      const rect = canvas!.getBoundingClientRect();
-      pointer.x = e.clientX - rect.left;
-      pointer.y = e.clientY - rect.top;
-      pointer.active = pointer.y > -40 && pointer.y < rect.height + 40;
-      if (reduceMotion) draw(performance.now());
-    };
-    const onLeave = () => (pointer.active = false);
     const onResize = () => {
       resize();
       draw(performance.now());
     };
 
     document.addEventListener("visibilitychange", onVisibility);
-    window.addEventListener("pointermove", onPointer, { passive: true });
-    document.documentElement.addEventListener("pointerleave", onLeave);
     window.addEventListener("resize", onResize);
 
     draw(performance.now());
@@ -273,8 +241,6 @@ export function HeroGraph({ prs }: { prs: GraphPr[] }) {
       stop();
       io.disconnect();
       document.removeEventListener("visibilitychange", onVisibility);
-      window.removeEventListener("pointermove", onPointer);
-      document.documentElement.removeEventListener("pointerleave", onLeave);
       window.removeEventListener("resize", onResize);
     };
   }, [prs]);
