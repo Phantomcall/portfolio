@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import { Availability } from "@/app/_components/availability";
 import { HeroGraph, type GraphPr } from "@/app/_components/hero-graph";
 import { MergeLedger, type LedgerRow } from "@/app/_components/merge-ledger";
-import { CommitSpine, CursorGlow, HeroTicker, Magnetic, SplitHeading, type TickerItem } from "@/app/_components/flair";
+import { CursorGlow, HeroTicker, Magnetic, SectionRail, SplitHeading, type TickerItem } from "@/app/_components/flair";
 import { CopyEmail, CountUp, Reveal, SiteHeader, Spotlight } from "@/app/_components/motion";
 import { ProjectFrame } from "@/app/_components/project-frame";
 import { Rates } from "@/app/_components/rates";
@@ -113,7 +113,7 @@ export default function Home() {
 
       <SiteHeader name={NAME} />
       <CursorGlow />
-      <CommitSpine />
+      <SectionRail />
 
       <main id="main">
         {/* ---------------- Hero ---------------- */}
@@ -147,7 +147,7 @@ export default function Home() {
             <div className="rise" style={{ "--delay": "500ms" } as CSSProperties}>
               <p className="mt-7 max-w-[36rem] text-lg leading-relaxed text-pretty text-mist sm:text-xl">
                 I’m {NAME}. The branching lines on this page are my real pull requests, merging back in the order
-                maintainers accepted them.<span className="max-lg:hidden"> Move your cursor through them.</span>
+                maintainers accepted them.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4 font-display font-semibold">
                 <Magnetic>

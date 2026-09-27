@@ -7,12 +7,12 @@ import type { Kind } from "@/lib/prs";
 const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ------------------------------------------------------------------------------------
- * Commit spine: a git line down the left margin. It fills as you scroll, and each
- * section is a commit node that lights up once you've passed it. Wide screens only;
- * the header nav is the accessible way around the page, so this is mouse-only.
+ * Section rail: a compact "you are here" navigator on the right edge. Seven evenly
+ * spaced commit nodes; the line fills toward the next one as you scroll, the current
+ * section's label stays visible, and the rest appear on hover or keyboard focus.
  * ---------------------------------------------------------------------------------- */
 
-const SPINE = [
+const SECTIONS = [
   { id: "top", label: "Intro", color: "#6ea8ff" },
   { id: "proof", label: "Proof", color: "#3ddba5" },
   { id: "work", label: "Work", color: "#ffc845" },
@@ -22,74 +22,94 @@ const SPINE = [
   { id: "contact", label: "Contact", color: "#3ddba5" },
 ];
 
-export function CommitSpine() {
-  const [marks, setMarks] = useState<((typeof SPINE)[number] & { at: number })[]>([]);
-  const [progress, setProgress] = useState(0);
+export function SectionRail() {
+  // `at` is the current section index plus how far through it you are (0–1),
+  // so 2.5 means halfway between Work and How I work.
+  const [at, setAt] = useState(0);
 
   useEffect(() => {
     let raf = 0;
-    const scrollMax = () => Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    const measure = () =>
-      setMarks(
-        SPINE.map((s) => {
-          const el = document.getElementById(s.id);
-          const top = el ? el.getBoundingClientRect().top + window.scrollY : 0;
-          return { ...s, at: Math.min(1, Math.max(0, top / scrollMax())) };
-        }),
-      );
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => setProgress(window.scrollY / scrollMax()));
+    let tops: number[] = [];
+    const measure = () => {
+      tops = SECTIONS.map(({ id }) => {
+        const el = document.getElementById(id);
+        return el ? el.getBoundingClientRect().top + window.scrollY : 0;
+      });
     };
-    // The observer fires once on observe, so it also does the first measurement.
+    const update = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        if (window.scrollY >= max - 2) return setAt(SECTIONS.length - 1);
+        // A section counts as current once its top passes 35% down the viewport.
+        const pos = window.scrollY + window.innerHeight * 0.35;
+        let i = 0;
+        while (i < tops.length - 1 && tops[i + 1] <= pos) i++;
+        const next = tops[i + 1] ?? document.documentElement.scrollHeight;
+        setAt(i + Math.min(1, Math.max(0, (pos - tops[i]) / Math.max(1, next - tops[i]))));
+      });
+    };
+    // The observer fires once on observe, so it also takes the first measurement.
     const ro = new ResizeObserver(() => {
       measure();
-      onScroll();
+      update();
     });
     ro.observe(document.body);
-    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("scroll", update, { passive: true });
     return () => {
       ro.disconnect();
-      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll", update);
       cancelAnimationFrame(raf);
     };
   }, []);
 
+  const current = Math.floor(at);
+  const last = SECTIONS.length - 1;
+
   return (
-    <div
-      aria-hidden
-      className="pointer-events-none fixed top-24 bottom-10 left-[calc((100vw-72rem)/2-3.25rem)] z-30 hidden w-6 min-[1360px]:block"
-    >
-      <span className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-rule/80" />
-      <span
-        className="absolute top-0 left-1/2 h-full w-[2px] origin-top bg-gradient-to-b from-glow-blue via-glow-violet to-glow-aqua shadow-[0_0_12px_#6ea8ff88]"
-        style={{ transform: `translateX(-50%) scaleY(${progress})` }}
-      />
-      {marks.map((m) => {
-        const passed = progress >= m.at - 0.002;
-        return (
-          <a
-            key={m.id}
-            href={`#${m.id}`}
-            tabIndex={-1}
-            className="group pointer-events-auto absolute left-1/2 grid size-6 -translate-x-1/2 -translate-y-1/2 place-items-center"
-            style={{ top: `${m.at * 100}%` }}
-          >
-            <span
-              className="block size-3 rounded-full border-2 transition-all duration-500 group-hover:scale-150"
-              style={{
-                borderColor: passed ? m.color : "var(--color-rule)",
-                background: passed ? m.color : "var(--color-night)",
-                boxShadow: passed ? `0 0 14px ${m.color}` : "none",
-              }}
-            />
-            <span className="absolute top-1/2 left-7 -translate-x-1 -translate-y-1/2 rounded-md border border-rule bg-night/90 px-2 py-1 font-mono text-[0.62rem] whitespace-nowrap text-snow uppercase opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
-              {m.label}
-            </span>
-          </a>
-        );
-      })}
-    </div>
+    <nav aria-label="Page sections" className="fixed top-1/2 right-5 z-30 hidden -translate-y-1/2 min-[1280px]:block">
+      <ol className="relative flex flex-col gap-3.5">
+        {/* Track, and the fill that follows your scroll position. Both run dot centre to dot centre. */}
+        <span aria-hidden className="absolute top-[11px] right-[8.5px] bottom-[11px] w-px bg-rule" />
+        <span
+          aria-hidden
+          className="absolute top-[11px] right-[8px] bottom-[11px] w-[2px] origin-top bg-gradient-to-b from-glow-blue via-glow-violet to-glow-aqua transition-transform duration-150"
+          style={{ transform: `scaleY(${at / last})` }}
+        />
+        {SECTIONS.map((s, i) => {
+          const isCurrent = i === current;
+          const passed = i <= current;
+          return (
+            <li key={s.id} className="relative flex justify-end">
+              <a
+                href={`#${s.id}`}
+                aria-current={isCurrent ? "location" : undefined}
+                className="group flex items-center gap-3 rounded-full py-0.5 pl-2 focus-visible:outline-offset-2"
+              >
+                <span
+                  className={`rounded-md border border-rule bg-night/90 px-2 py-0.5 font-mono text-[0.62rem] tracking-wide whitespace-nowrap uppercase backdrop-blur transition-all duration-200 ${
+                    isCurrent
+                      ? "translate-x-0 text-snow opacity-100"
+                      : "translate-x-1 text-mist opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"
+                  }`}
+                >
+                  {s.label}
+                </span>
+                <span
+                  aria-hidden
+                  className={`relative block size-[18px] shrink-0 rounded-full border-2 transition-all duration-300 group-hover:scale-110 ${isCurrent ? "scale-110" : ""}`}
+                  style={{
+                    borderColor: passed ? s.color : "var(--color-rule)",
+                    background: isCurrent ? s.color : "var(--color-night)",
+                    boxShadow: isCurrent ? `0 0 14px ${s.color}` : "none",
+                  }}
+                />
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
   );
 }
 
